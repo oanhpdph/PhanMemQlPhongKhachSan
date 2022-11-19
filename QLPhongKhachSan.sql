@@ -162,3 +162,5 @@ constraint pk_roomBillService primary key(IdBill,IdService,IdRoom),
 constraint fk_idBill foreign key (idbill) references roomBill(BillId),
 constraint fk_idService foreign key (idservice) references [service](id),
 )
+ALTER TABLE RoomBillService DROP COLUMN dateCheckIn;
+ALTER TABLE RoomBillService DROP COLUMN dateCheckOut;
