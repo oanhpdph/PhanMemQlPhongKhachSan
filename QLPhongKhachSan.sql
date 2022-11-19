@@ -144,7 +144,8 @@ conStraint pk_roombill primary key(RoomId,BillId),
 constraint fk_roomId1 foreign key (roomid) references room(id),
 constraint fk_BillId foreign key (billid) references bill(id),
 ) 
-
+ALTER TABLE RoomBill ADD dateCheckIn date;
+ALTER TABLE RoomBill ADD dateCheckOut date;
 
 if OBJECT_ID('RoomBillService') is not null
 drop table RoomBillService
