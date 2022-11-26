@@ -1,43 +1,28 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package service;
 
-import java.util.List;
+import java.util.ArrayList;
 import model.Service;
-import respository.ServiceRepo;
+import viewModel.PromotionSVM;
 
-public class ServiceService implements IService<Service, String> {
+/**
+ *
+ * @author admin
+ */
+public interface ServiceService {
 
-    private ServiceRepo repo;
-
-    public ServiceService() {
-        repo = new ServiceRepo();
-    }
-
-    public List<Service> getByCode(String code) {
-        if (code.equals("") || code == null || repo.getIdByCode(code).isEmpty()) {
-            return null;
-        }
-        return repo.getIdByCode(code);
-
-    }
-
-    @Override
-    public String insert(Service entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void update(Service entity, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<Service> getAll() {
-        return repo.getAll();
-    }
-
+    public ArrayList<Service> getListDV();
+    
+    public void insert(Service s);
+    
+    public void delete(String id);
+    
+    public void update(Service s, String id);
+    
+    public ArrayList<Service> getSearch(String ma);
+    
+    public ArrayList<PromotionSVM> getListPS();
 }
