@@ -19,6 +19,7 @@ import java.util.concurrent.Executors;
 import model.Client;
 import org.apache.log4j.PropertyConfigurator;
 import utilities.StringHandling;
+import java.sql.*;
 
 public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactory {
 
