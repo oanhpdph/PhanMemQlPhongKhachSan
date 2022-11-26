@@ -1,14 +1,19 @@
 package views;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import service.StaffService;
+import utilities.Auth;
 
 public class ViewDangNhap extends javax.swing.JFrame {
 
-    public String id = "";
-    public String rule = "";
-    
+    private StaffService staffService;
+    Auth auth = new Auth();
+
     public ViewDangNhap() {
         initComponents();
+        staffService = new StaffService();
     }
 
     @SuppressWarnings("unchecked")
@@ -132,7 +137,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +148,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Bạn muốn thoát?", "Thoát", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
@@ -150,6 +156,25 @@ public class ViewDangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        List<String> list = staffService.getByUser(txtTen.getText().trim(), String.valueOf(txtPass.getPassword()));
+        if (list == null) {
+            JOptionPane.showMessageDialog(this, "Sai tên hoặc mật khẩu.");
+            return;
+        }
+        auth.rule = "";
+        auth.rule = list.get(0);// list(0) > rule
+
+        auth.id = ""; // list(1) > id
+        auth.id = list.get(1);
+        String vaiTro = null;
+        this.setVisible(false);
+        if (auth.checkRule(auth.rule) == false) {
+            vaiTro = "Nhân Viên";
+        } else {
+            vaiTro = "Quản Lý";
+        }
+        new ViewTrangChu().setVisible(true);
+        JOptionPane.showMessageDialog(this, "Đăng nhập thành công với vai trò" + " " + vaiTro);
 
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
@@ -167,17 +192,27 @@ public class ViewDangNhap extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangNhap.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

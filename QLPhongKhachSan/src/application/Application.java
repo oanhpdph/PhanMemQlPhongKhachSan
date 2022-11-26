@@ -1,8 +1,9 @@
 package application;
 
 public class Application {
+
     public static void main(String[] args) {
-        new views.ViewTrangChu().setVisible(true);
-        
+        new views.ViewDangNhap().setVisible(true);
+
     }
 }

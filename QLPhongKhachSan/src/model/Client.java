@@ -13,6 +13,21 @@ public class Client {
     private String idPersonCard;
     private String customPhone;
 
+    public Client() {
+    }
+
+    public Client(String id, String code, String name, String dateOfBirth, String sex, String address, String idPersonCard, String customPhone) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+        this.address = address;
+        this.idPersonCard = idPersonCard;
+        this.customPhone = customPhone;
+    }
+
+    
     public String getId() {
         return id;
     }

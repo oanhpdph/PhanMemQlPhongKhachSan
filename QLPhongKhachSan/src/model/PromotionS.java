@@ -3,6 +3,7 @@ package model;
 
 public class PromotionS {
     private String id;
+    private String code;
     private String value;
     private String dateStart;
     private String dateEnd;
@@ -23,6 +24,14 @@ public class PromotionS {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getValue() {

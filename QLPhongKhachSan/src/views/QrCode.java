@@ -13,19 +13,27 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.util.Properties;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import model.Client;
+import org.apache.log4j.PropertyConfigurator;
+import utilities.StringHandling;
 
 public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactory {
 
     private WebcamPanel panel = null;
-    private Webcam webcam = null;
+    public Webcam webcam = null;
+    public static Client client = new Client();
+    public static int temp = 0;
 
     private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
 
     public QrCode() {
         initComponents();
+        String log4jConfPath = "test/log4j.properties";
+        PropertyConfigurator.configure(log4jConfPath);
         initWebcam();
     }
 
@@ -33,44 +41,36 @@ public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactor
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        result_field = new javax.swing.JTextField();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 525, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(127, 127, 127))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(result_field)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
-                .addComponent(result_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        webcam.close();
+        temp = 1;
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -99,6 +99,8 @@ public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactor
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         try {
@@ -119,9 +121,7 @@ public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactor
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField result_field;
     // End of variables declaration//GEN-END:variables
 
     private void initWebcam() {
@@ -133,7 +133,7 @@ public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactor
         panel.setPreferredSize(size);
         panel.setFPSDisplayed(true);
 
-        jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
+        jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, jPanel2.getWidth(), jPanel2.getHeight()));
 
         executor.execute(this);
     }
@@ -146,27 +146,33 @@ public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactor
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             Result result = null;
             BufferedImage image = null;
-
             if (webcam.isOpen()) {
                 if ((image = webcam.getImage()) == null) {
                     continue;
                 }
             }
-
-            LuminanceSource source = new BufferedImageLuminanceSource(image);
-            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
             try {
-                result = new MultiFormatReader().decode(bitmap);
-            } catch (NotFoundException e) {
-                //No result...
+                LuminanceSource source = new BufferedImageLuminanceSource(image);
+                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+                try {
+                    result = new MultiFormatReader().decode(bitmap);
+                } catch (NotFoundException e) {
+                    //No result...
+                }
+            } catch (Exception ex) {
+
             }
 
             if (result != null) {
-                result_field.setText(result.getText());
+                StringHandling stringHandling = new StringHandling();
+                client = stringHandling.splitString(result.getText());
+                System.out.println(client.getAddress());
+                System.out.println(result.getText());
+                System.out.println(stringHandling.splitString(result.getText()));
+                temp = 1;
+                return;
             }
         } while (true);
     }

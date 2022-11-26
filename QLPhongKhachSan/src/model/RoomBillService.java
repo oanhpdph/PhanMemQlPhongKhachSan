@@ -9,6 +9,36 @@ public class RoomBillService {
     private String idRoom;
     private String priceService;
     private String promotionService;
+    private String dateofHire;
+    private int times;
+
+    public RoomBillService() {
+    }
+
+    public RoomBillService(String idBill, String idService, String idRoom, String priceService, String promotionService, String dateofHire) {
+        this.idBill = idBill;
+        this.idService = idService;
+        this.idRoom = idRoom;
+        this.priceService = priceService;
+        this.promotionService = promotionService;
+        this.dateofHire = dateofHire;
+    }
+
+    public int getTimes() {
+        return times;
+    }
+
+    public void setTimes(int times) {
+        this.times = times;
+    }
+
+    public String getDateofHire() {
+        return dateofHire;
+    }
+
+    public void setDateofHire(String dateofHire) {
+        this.dateofHire = dateofHire;
+    }
 
     public String getIdBill() {
         return idBill;

@@ -4,6 +4,8 @@
  */
 package utilities;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,9 +22,8 @@ import java.util.List;
  */
 public class ReadWriteData {
 
-    public List<String> doc(String nameFile) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public List<Integer> doc(String nameFile) throws FileNotFoundException, IOException, ClassNotFoundException {
         File file = new File(nameFile);
-
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -30,30 +31,31 @@ public class ReadWriteData {
             }
         }
         FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        String code;
-        List<String> listtemp = new ArrayList<>();
+        DataInputStream dis = new DataInputStream(fis);
+        int code = 0;
+        List<Integer> listtemp = new ArrayList<>();
         while (fis.available() > 0) {
-            code = (String) ois.readObject();
+            code =  dis.readInt();
             listtemp.add(code);
         }
         fis.close();
-        ois.close();
+        dis.close();
         return listtemp;
     }
 
-    public void ghidl(String code, String nameFile) throws FileNotFoundException, IOException {
+    public void ghidl(int code, String nameFile) throws FileNotFoundException, IOException {
         File file = new File(nameFile);
         if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
+
             }
         }
         FileOutputStream fos = new FileOutputStream(file);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(code);
+        DataOutputStream dos = new DataOutputStream(fos);
+        dos.writeInt(code);
         fos.close();
-        oos.close();
+        dos.close();
     }
 }

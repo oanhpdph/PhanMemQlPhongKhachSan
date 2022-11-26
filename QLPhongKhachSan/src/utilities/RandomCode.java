@@ -1,34 +1,36 @@
 package utilities;
 
+import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RandomCode {
 
-    private static final String alpha = "abcdefghijklmnopqrstuvwxyz"; // a-z
-    private static final String alphaUpperCase = alpha.toUpperCase(); // A-Z
-    private static final String digits = "0123456789"; // 0-9
-    private static final String ALPHA_NUMERIC = alphaUpperCase + digits;
-    private static Random generator = new Random();
+    private ReadWriteData readWriteData = new ReadWriteData();
 
-    public String randomAlphaNumeric(int numberOfCharactor) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < numberOfCharactor; i++) {
-            int number = randomNumber(0, ALPHA_NUMERIC.length() - 1);
-            char ch = ALPHA_NUMERIC.charAt(number);
-            sb.append(ch);
+    public String createCode(String firstCode, String fileName) {
+        firstCode = firstCode.toUpperCase();
+        int lastCode = 0;
+        try {
+            for (int i : readWriteData.doc(fileName)) {
+                lastCode = i;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(RandomCode.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RandomCode.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sb.toString();
-    }
+        String code = firstCode;
+        if (lastCode < 10) {
+            lastCode = lastCode + 1;
+            code = firstCode + "0" + String.valueOf(lastCode);
+        }
 
-    public static int randomNumber(int min, int max) {
-        return generator.nextInt((max - min) + 1) + min;
+        return code;
     }
 
     public static void main(String[] args) {
-        int numberOfCharactor = 8;
-        RandomCode rand = new RandomCode();
-         
-        System.out.println("randomString1: " + rand.randomAlphaNumeric(numberOfCharactor));
-        System.out.println("randomString1: " + rand.randomAlphaNumeric(numberOfCharactor));
+
     }
 }

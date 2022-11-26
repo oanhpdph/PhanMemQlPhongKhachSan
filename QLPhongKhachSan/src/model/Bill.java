@@ -10,11 +10,24 @@ public class Bill {
     private String code;
     private String name;
     private String price;
-    private String address;
-    private String hotelPhone;
     private String status;
     private String date;
 
+    public Bill() {
+    }
+
+    public Bill(String id, String idClient, String idStaff, String code, String name, String price, String status, String date) {
+        this.id = id;
+        this.idClient = idClient;
+        this.idStaff = idStaff;
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.status = status;
+        this.date = date;
+    }
+
+    
     public String getId() {
         return id;
     }
@@ -63,21 +76,6 @@ public class Bill {
         this.price = price;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getHotelPhone() {
-        return hotelPhone;
-    }
-
-    public void setHotelPhone(String hotelPhone) {
-        this.hotelPhone = hotelPhone;
-    }
 
     public String getStatus() {
         return status;

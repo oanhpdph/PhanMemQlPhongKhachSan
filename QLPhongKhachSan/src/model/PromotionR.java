@@ -6,6 +6,7 @@ public class PromotionR {
     private String value;
     private String dateStart;
     private String dateEnd;
+    private String code;
 
     public PromotionR() {
     }
@@ -15,6 +16,14 @@ public class PromotionR {
         this.value = value;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getId() {

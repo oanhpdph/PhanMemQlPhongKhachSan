@@ -3,13 +3,36 @@ package model;
 public class Room {
 
     private String id;
-    private String idStatus;
-    private String idKindOfRoom;
+    private String status;
+    private String kindOfRoom;
+    private String idPromotion;
     private String code;
     private String roomNumber;
     private String area;
     private String location;
     private String price;
+
+    public Room() {
+    }
+
+    public Room(String id, String idStatus, String idKindOfRoom, String code, String roomNumber, String area, String location, String price) {
+        this.id = id;
+        this.status = idStatus;
+        this.kindOfRoom = idKindOfRoom;
+        this.code = code;
+        this.roomNumber = roomNumber;
+        this.area = area;
+        this.location = location;
+        this.price = price;
+    }
+
+    public String getIdPromotion() {
+        return idPromotion;
+    }
+
+    public void setIdPromotion(String idPromotion) {
+        this.idPromotion = idPromotion;
+    }
 
     public String getId() {
         return id;
@@ -19,20 +42,20 @@ public class Room {
         this.id = id;
     }
 
-    public String getIdStatus() {
-        return idStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setIdStatus(String idStatus) {
-        this.idStatus = idStatus;
+    public void setStatus(String Status) {
+        this.status = Status;
     }
 
-    public String getIdKindOfRoom() {
-        return idKindOfRoom;
+    public String getKindOfRoom() {
+        return kindOfRoom;
     }
 
-    public void setIdKindOfRoom(String idKindOfRoom) {
-        this.idKindOfRoom = idKindOfRoom;
+    public void setKindOfRoom(String KindOfRoom) {
+        this.kindOfRoom = KindOfRoom;
     }
 
     public String getCode() {

@@ -1,12 +1,6 @@
 package service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +9,18 @@ import java.util.logging.Logger;
 import model.Client;
 import respository.ClientRepo;
 import utilities.ReadWriteData;
-import views.ViewTrangChu;
+import utilities.StringHandling;
 
 public class ClientService implements IService<Client, String> {
 
     private ClientRepo repo;
     private ReadWriteData readWriteData;
+    private StringHandling upperLowerCase;
 
     public ClientService() {
         readWriteData = new ReadWriteData();
         repo = new ClientRepo();
+        upperLowerCase = new StringHandling();
     }
 
     private String checkData(Client entity) {
@@ -51,6 +47,9 @@ public class ClientService implements IService<Client, String> {
     }
 
     public List<Client> checkTrung(String cccd) {
+        if (cccd.equals("")) {
+            return null;
+        }
         return repo.checkTrung(cccd);
     }
 
@@ -65,30 +64,34 @@ public class ClientService implements IService<Client, String> {
             return "Số điện thoại cần nhập 10 số và bắt đầu bằng 0";
         } else {
             try {
+                entity.setName(upperLowerCase.firstUpper(entity.getName()));
+                entity.setAddress(upperLowerCase.firstUpper(entity.getAddress()));
                 repo.insert(entity);
-                readWriteData.ghidl(entity.getCode(), "maKh.txt");
             } catch (ParseException ex) {
                 Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                entity.setCode(entity.getCode().substring(2));
+                readWriteData.ghidl(Integer.parseInt(entity.getCode()), "maKh.txt");
             } catch (IOException ex) {
                 Logger.getLogger(ClientService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return "Thêm thành công khách hàng";
+        return null;
     }
 
     @Override
     public void update(Client entity, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        repo.update(entity, id);
     }
 
     @Override
     public void delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        repo.delete(id);
     }
 
     @Override
     public List<Client> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return repo.getAll();
     }
-
 }

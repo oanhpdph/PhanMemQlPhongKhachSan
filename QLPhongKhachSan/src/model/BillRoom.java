@@ -9,6 +9,18 @@ public class BillRoom {
     private String dateCheckIn;
     private String dateCheckout;
 
+    public BillRoom() {
+    }
+
+    public BillRoom(String roomId, String billId, String priceRoom, String promotionRoom, String dateCheckIn, String dateCheckout) {
+        this.roomId = roomId;
+        this.billId = billId;
+        this.priceRoom = priceRoom;
+        this.promotionRoom = promotionRoom;
+        this.dateCheckIn = dateCheckIn;
+        this.dateCheckout = dateCheckout;
+    }
+
     public String getRoomId() {
         return roomId;
     }

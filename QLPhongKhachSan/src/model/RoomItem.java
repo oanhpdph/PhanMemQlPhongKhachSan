@@ -7,6 +7,16 @@ public class RoomItem {
     private String status;
     private int amount;
 
+    public RoomItem() {
+    }
+
+    public RoomItem(String roomId, String itemId, String status, int amount) {
+        this.roomId = roomId;
+        this.itemId = itemId;
+        this.status = status;
+        this.amount = amount;
+    }
+
     public String getRoomId() {
         return roomId;
     }

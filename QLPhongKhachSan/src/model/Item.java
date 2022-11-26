@@ -6,6 +6,15 @@ public class Item {
     private String code;
     private String name;
 
+    public Item() {
+    }
+
+    public Item(String id, String code, String name) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+    }
+
     public String getId() {
         return id;
     }

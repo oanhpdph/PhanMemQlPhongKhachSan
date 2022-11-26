@@ -36,6 +36,34 @@ public class ClientRepo {
         }
     }
 
+    public void delete(String id) {
+        String sql = "delete Client where id=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(BillRepo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void update(Client client, String id) {
+        String sql = "update Client set name = ?,dateOfBirth = ?, Sex = ? , Address = ?,customphone = ? where id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, client.getName());
+            ps.setString(2, client.getDateOfBirth());
+            ps.setString(3, client.getSex());
+            ps.setString(4, client.getAddress());
+            ps.setString(5, client.getCustomPhone());
+            ps.setString(6, id);
+            ps.execute();
+        } catch (SQLException ex) {
+          
+        }
+    }
+
     public List<Client> getAll() {
         String sql = "select * from client";
         List<Client> list = new ArrayList<>();
@@ -67,7 +95,6 @@ public class ClientRepo {
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, cccd);
-//            ps.setString(2, cccd);
             ps.execute();
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {

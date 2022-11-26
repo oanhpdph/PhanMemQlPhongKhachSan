@@ -7,7 +7,7 @@ public class Staff {
     private String id;
     private String code;
     private String name;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String sex;
     private String address;
     private String idPersonCard;
@@ -15,6 +15,23 @@ public class Staff {
     private String user;
     private String passWord;
     private String rule;
+
+    public Staff() {
+    }
+
+    public Staff(String id, String code, String name, String dateOfBirth, String sex, String address, String idPersonCard, String phone, String user, String passWord, String rule) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+        this.address = address;
+        this.idPersonCard = idPersonCard;
+        this.phone = phone;
+        this.user = user;
+        this.passWord = passWord;
+        this.rule = rule;
+    }
 
     public String getId() {
         return id;
@@ -40,11 +57,11 @@ public class Staff {
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
