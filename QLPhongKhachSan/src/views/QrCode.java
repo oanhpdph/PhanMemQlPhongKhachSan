@@ -70,7 +70,7 @@ public class QrCode extends javax.swing.JFrame implements Runnable, ThreadFactor
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         webcam.close();
-        temp = 1;
+     
     }//GEN-LAST:event_formWindowClosing
 
     /**
