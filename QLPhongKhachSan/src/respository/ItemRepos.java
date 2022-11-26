@@ -6,8 +6,9 @@ package respository;
 
 import java.sql.*;
 import java.util.ArrayList;
-import model.item;
-import utilities.jdbcUntil;
+import java.util.List;
+import model.Item;
+import utilities.JdbcUntil;
 
 /**
  *
@@ -15,9 +16,9 @@ import utilities.jdbcUntil;
  */
 public class ItemRepos {
     
-    public void insert(item i) {
-        Connection conn = jdbcUntil.getConnection();
-        String sql = "insert into item(code, name) values(?,?)";
+    public void insert(Item i) {
+        Connection conn = JdbcUntil.getConnection();
+        String sql = "insert into Item(code, name) values(?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, i.getCode());
@@ -29,8 +30,8 @@ public class ItemRepos {
     }
     
     public void delete(String id) {
-        Connection conn = jdbcUntil.getConnection();
-        String sql = "delete from item where id = ?";
+        Connection conn = JdbcUntil.getConnection();
+        String sql = "delete from Item where id = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
@@ -40,9 +41,9 @@ public class ItemRepos {
         }
     }
     
-    public void update(item i, String id) {
-        Connection conn = jdbcUntil.getConnection();
-        String sql = "update item set code=?, name=? where id=?";
+    public void update(Item i, String id) {
+        Connection conn = JdbcUntil.getConnection();
+        String sql = "update Item set code=?, name=? where id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, i.getCode());
@@ -54,10 +55,10 @@ public class ItemRepos {
         }
     }
     
-    public ArrayList<item> getAll() {
-        ArrayList<item> listService = new ArrayList<>();
-        Connection conn = jdbcUntil.getConnection();
-        String sql = "select * from item";
+    public List<Item> getAll() {
+        List<Item> listService = new ArrayList<>();
+        Connection conn = JdbcUntil.getConnection();
+        String sql = "select * from Item";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.execute();
@@ -66,7 +67,7 @@ public class ItemRepos {
                 String id = rs.getString("id");
                 String code = rs.getString("code");
                 String name = rs.getString("name");
-                item i = new item(id, code, name);
+                Item i = new Item(id, code, name);
                 listService.add(i);
             }
         } catch (SQLException ex) {
@@ -75,10 +76,10 @@ public class ItemRepos {
         return listService;
     }
     
-    public ArrayList<item> getSearch(String ma) {
-        ArrayList<item> listService = new ArrayList<>();
-        Connection conn = jdbcUntil.getConnection();
-        String sql = "select * from item where code=?";
+    public ArrayList<Item> getSearch(String ma) {
+        ArrayList<Item> listService = new ArrayList<>();
+        Connection conn = JdbcUntil.getConnection();
+        String sql = "select * from Item where code=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
@@ -88,7 +89,7 @@ public class ItemRepos {
                 String id = rs.getString("id");
                 String code = rs.getString("code");
                 String name = rs.getString("name");
-                item i = new item(id, code, name);
+                Item i = new Item(id, code, name);
                 listService.add(i);
             }
         } catch (SQLException ex) {

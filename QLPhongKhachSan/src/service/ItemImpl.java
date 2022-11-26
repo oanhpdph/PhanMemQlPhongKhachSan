@@ -5,15 +5,16 @@
 package service.Impl;
 
 import java.util.ArrayList;
-import model.item;
+import java.util.List;
+import model.Item;
 import respository.ItemRepos;
-import service.ItemService;
+import service.IService;
 
 /**
  *
  * @author admin
  */
-public class ItemImpl implements ItemService {
+public class ItemImpl implements IService<Item, String> {
 
     ItemRepos ir;
 
@@ -21,19 +22,39 @@ public class ItemImpl implements ItemService {
         ir = new ItemRepos();
     }
 
-    @Override
-    public ArrayList<item> getListI() {
-        return ir.getAll();
+//    @Override
+//    public ArrayList<item> getListI() {
+//        return ir.getAll();
+//    }
+//
+//    @Override
+//    public void update(item i, String id) {
+//        ir.update(i, id);
+//    }
+//
+//    @Override
+//    public void insert(item i) {
+//        ir.insert(i);
+//    }
+//
+//    @Override
+//    public void delete(String id) {
+//        ir.delete(id);
+//    }
+//
+    public ArrayList<Item> getSearch(String ma) {
+        return ir.getSearch(ma);
     }
 
     @Override
-    public void update(item i, String id) {
-        ir.update(i, id);
-    }
-
-    @Override
-    public void insert(item i) {
+    public String insert(Item i) {
         ir.insert(i);
+        return "Thành công";
+    }
+
+    @Override
+    public void update(Item i, String id) {
+        ir.update(i, id);
     }
 
     @Override
@@ -42,8 +63,8 @@ public class ItemImpl implements ItemService {
     }
 
     @Override
-    public ArrayList<item> getSearch(String ma) {
-        return ir.getSearch(ma);
+    public List<Item> getAll() {
+        return ir.getAll();
     }
 
 }

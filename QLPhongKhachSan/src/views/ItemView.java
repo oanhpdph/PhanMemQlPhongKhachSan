@@ -6,7 +6,7 @@ package views;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.item;
+import model.Item;
 import service.Impl.ItemImpl;
 import service.ItemService;
 
@@ -28,9 +28,9 @@ public class ItemView extends javax.swing.JFrame {
     }
 
     public void loadData() {
-        defaultTableModel = (DefaultTableModel) tb_item.getModel();
+        defaultTableModel = (DefaultTableModel) tb_Item.getModel();
         defaultTableModel.setRowCount(0);
-        for (item i : is.getListI()) {
+        for (Item i : is.getListI()) {
             defaultTableModel.addRow(new Object[]{
                 i.getId(), i.getCode(), i.getName()
             });
@@ -40,15 +40,15 @@ public class ItemView extends javax.swing.JFrame {
     public void loadSearch() {
         defaultTableModel = (DefaultTableModel) tb_item.getModel();
         defaultTableModel.setRowCount(0);
-        for (item i : is.getSearch(txt_tk.getText())) {
+        for (Item i : is.getSearch(txt_tk.getText())) {
             defaultTableModel.addRow(new Object[]{
                 i.getId(), i.getCode(), i.getName()
             });
         }
     }
 
-    private item getForm() {
-        item i = new item();
+    private Item getForm() {
+        Item i = new Item();
         i.setCode(txt_code.getText());
         i.setName(txt_name.getText());
         return i;
@@ -258,7 +258,7 @@ public class ItemView extends javax.swing.JFrame {
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
         // TODO add your handling code here:
-        item i = this.getForm();
+        Item i = this.getForm();
         int row = tb_item.getSelectedRow();
         String id = tb_item.getValueAt(row, 0).toString();
         is.update(i, id);
@@ -268,7 +268,7 @@ public class ItemView extends javax.swing.JFrame {
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
         // TODO add your handling code here:
-        item i = this.getForm();
+        Item i = this.getForm();
         is.insert(i);
         loadData();
         clearF();
@@ -291,7 +291,7 @@ public class ItemView extends javax.swing.JFrame {
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
         // TODO add your handling code here:
         int bien = 0;
-        for (item i : is.getListI()) {
+        for (Item i : is.getListI()) {
             if (txt_tk.getText().equals(i.getCode())) {
                 loadSearch();
                 JOptionPane.showMessageDialog(this, "ket qua");

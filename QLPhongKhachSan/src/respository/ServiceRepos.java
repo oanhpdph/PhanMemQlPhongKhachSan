@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.service;
-import utilities.jdbcUntil;
+import model.Service;
+import utilities.JdbcUntil;
 import viewModel.PromotionSVM;
 
 /**
@@ -19,8 +19,8 @@ import viewModel.PromotionSVM;
  */
 public class ServiceRepos {
     
-    public void insert(service s) {
-        Connection conn = jdbcUntil.getConnection();
+    public void insert(Service s) {
+        Connection conn = JdbcUntil.getConnection();
         String sql = "insert into [service](code,name,price,notes,idpromotion) values(?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -28,7 +28,7 @@ public class ServiceRepos {
             ps.setString(2, s.getName());
             ps.setString(3, s.getPrice());
             ps.setString(4, s.getNotes());
-            ps.setString(5, s.getIdpromotion());
+            ps.setString(5, s.getIdPromotion());
             ps.execute();
             System.out.println("them thanh cong");
         } catch (SQLException ex) {
@@ -37,7 +37,7 @@ public class ServiceRepos {
     }
     
     public void delete(String id) {
-        Connection conn = jdbcUntil.getConnection();
+        Connection conn = JdbcUntil.getConnection();
         String sql = "delete from service where id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -48,8 +48,8 @@ public class ServiceRepos {
         }
     }
     
-    public void update(service s, String id) {
-        Connection conn = jdbcUntil.getConnection();
+    public void update(Service s, String id) {
+        Connection conn = JdbcUntil.getConnection();
         String sql = "update service set code=?, name=?, price=?, notes=?, idpromotion=? where id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -57,7 +57,7 @@ public class ServiceRepos {
             ps.setString(2, s.getName());
             ps.setString(3, s.getPrice());
             ps.setString(4, s.getNotes());
-            ps.setString(5, s.getIdpromotion());
+            ps.setString(5, s.getIdPromotion() );
             ps.setString(6, id);
             ps.execute();
         } catch (SQLException ex) {
@@ -65,9 +65,9 @@ public class ServiceRepos {
         }
     }
     
-    public ArrayList<service> getAll() {
-        ArrayList<service> listService = new ArrayList<>();
-        Connection conn = jdbcUntil.getConnection();
+    public ArrayList<Service> getAll() {
+        ArrayList<Service> listService = new ArrayList<>();
+        Connection conn = JdbcUntil.getConnection();
         String sql = "select * from service";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -80,7 +80,7 @@ public class ServiceRepos {
                 String price = rs.getString("price");
                 String notes = rs.getString("notes");
                 String idpro = rs.getString("idpromotion");
-                service s = new service(id, code, name, price, notes, idpro);
+                Service s = new Service(id, code, name, price, notes, idpro);
                 listService.add(s);
             }
         } catch (SQLException ex) {
@@ -89,9 +89,9 @@ public class ServiceRepos {
         return listService;
     }
     
-    public ArrayList<service> getSearch(String ma) {
-        ArrayList<service> listService = new ArrayList<>();
-        Connection conn = jdbcUntil.getConnection();
+    public ArrayList<Service> getSearch(String ma) {
+        ArrayList<Service> listService = new ArrayList<>();
+        Connection conn = JdbcUntil.getConnection();
         String sql = "select * from service where code = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -105,7 +105,7 @@ public class ServiceRepos {
                 String price = rs.getString("price");
                 String notes = rs.getString("notes");
                 String idpro = rs.getString("idpromotion");
-                service s = new service(id, code, name, price, notes, idpro);
+                Service s = new Service(id, code, name, price, notes, idpro);
                 listService.add(s);
             }
         } catch (SQLException ex) {
@@ -116,7 +116,7 @@ public class ServiceRepos {
     
     public ArrayList<PromotionSVM> getAllPS() {
         ArrayList<PromotionSVM> listPS = new ArrayList<>();
-        Connection conn = jdbcUntil.getConnection();
+        Connection conn = JdbcUntil.getConnection();
         String sql = "select Id, value, dateStart, dateEnd from promotionS";
         PreparedStatement ps;
         try {
