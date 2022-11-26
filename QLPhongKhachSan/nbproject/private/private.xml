@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/DuAn1/QLPhongKhachSan/src/model/Client.java</file>
-            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/DuAn1/QLPhongKhachSan/src/application/Application.java</file>
-            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/DuAn1/QLPhongKhachSan/src/service/ClientService.java</file>
-            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/DuAn1/QLPhongKhachSan/src/views/QrCode.java</file>
-            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/DuAn1/QLPhongKhachSan/src/respository/ClientRepo.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/views/QrCode.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/respository/ItemRepos.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/service/ServiceImpl.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/application/Application.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/model/Room.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/views/ServiceView.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/service/ServiceService.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/service/ItemImpl.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/views/ViewTrangChu.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/service/IService.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/views/ItemView.java</file>
         </group>
     </open-files>
 </project-private>
