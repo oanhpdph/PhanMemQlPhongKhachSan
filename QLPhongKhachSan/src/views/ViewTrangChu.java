@@ -41,7 +41,7 @@ import utilities.StringHandling;
 import static views.QrCode.client;
 
 public class ViewTrangChu extends javax.swing.JFrame {
-
+    
     private int temp = 0;
     public int tempCheck = 0;
     public ButtonGroup gr = new ButtonGroup();
@@ -49,30 +49,30 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private ReadWriteData readWriteData = new ReadWriteData();
     private DaysBetween2Dates between2Dates = new DaysBetween2Dates();
     private Auth auth;
-
+    
     private ClientService clienService;
     private BillService billService;
     private RoomService roomService;
-
+    
     private RoomBillService roomBillService;
     private ServiceService serviceService;
     private RoomBillServiceService roomBillServiceService;
     Calendar calendar = Calendar.getInstance();
-
+    
     public ViewTrangChu() {
         initComponents();
-
+        
         this.setSize(GetMaxWidth(), GetMaxHeight());
-
+        
         clienService = new ClientService();
         billService = new BillService();
         roomService = new RoomService();
         roomBillService = new RoomBillService();
-
+        
         serviceService = new ServiceService();
         roomBillServiceService = new RoomBillServiceService();
         auth = new Auth();
-
+        
         createPanel();
         gr.add(rdNu);
         gr.add(rdNam);
@@ -101,15 +101,15 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
         // het init
     }
-
+    
     public int GetMaxWidth() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
     }
-
+    
     public int GetMaxHeight() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
     }
-
+    
     void createPanel() {
         JPanel p = new JPanel();
         p = new javax.swing.JPanel();
@@ -129,12 +129,12 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGap(0, 124, Short.MAX_VALUE)
         );
-
+        
         jPanel15.add(p);
     }
-
+    
     void maxNs() {
-
+        
         int year = calendar.get(Calendar.YEAR) - 14;
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DATE);
@@ -146,7 +146,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
             Logger.getLogger(ViewTrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     void reset(Client client) {
         txtCCCD.setText(client.getIdPersonCard());
         txtMaKH.setText(client.getCode());
@@ -157,7 +157,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         maxNs();
         tempCheck = 0;
     }
-
+    
     public void fillRoom(Room room) {
         txtMaPhong.setText(room.getCode());
         txtSoPhong.setText(room.getRoomNumber());
@@ -166,7 +166,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         txtLocationRoom.setText(room.getLocation());
         txtGiaPhong.setText(room.getPrice());
     }
-
+    
     void fillClient(Client client) {
         txtTenKhachHang.setText(client.getName());
         try {
@@ -178,7 +178,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(ViewTrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         if (client.getSex().equals("Nam")) {
             rdNam.setSelected(true);
         } else {
@@ -189,7 +189,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         txtSDT.setText(client.getCustomPhone());
         txtMaKH.setText(client.getCode());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -206,8 +206,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
         menuDichVu = new javax.swing.JMenuItem();
         popupTang = new javax.swing.JPopupMenu();
         menuThemPhong = new javax.swing.JMenuItem();
-        popupThoat = new javax.swing.JPopupMenu();
-        menuThoat = new javax.swing.JMenuItem();
         jTabbedPane9 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -253,6 +251,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel24 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
+        btnDx = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jPanel40 = new javax.swing.JPanel();
@@ -371,29 +370,24 @@ public class ViewTrangChu extends javax.swing.JFrame {
         menuThemPhong.setText("Thêm phòng");
         popupTang.add(menuThemPhong);
 
-        menuThoat.setText("Thoát");
-        menuThoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuThoatActionPerformed(evt);
-            }
-        });
-        popupThoat.add(menuThoat);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 204));
 
         jTabbedPane9.setBackground(new java.awt.Color(255, 204, 204));
         jTabbedPane9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTabbedPane9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTabbedPane9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setToolTipText("");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Sẵn sàng:");
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("(0)");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Có khách:");
 
         jPanel36.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -407,9 +401,10 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 16, Short.MAX_VALUE)
         );
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("(0)");
 
         jPanel37.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -423,9 +418,10 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 16, Short.MAX_VALUE)
         );
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Chưa dọn:");
 
         jPanel35.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -439,9 +435,10 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 16, Short.MAX_VALUE)
         );
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("(0)");
 
         jPanel34.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -455,11 +452,13 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 16, Short.MAX_VALUE)
         );
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Đang dọn:");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("(0)");
 
         jPanel33.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -473,15 +472,19 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 16, Short.MAX_VALUE)
         );
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Sửa chữa:");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("(0)");
 
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel31.setText("Tất cả:");
 
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel32.setText("(0)");
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -490,7 +493,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 204, 204));
 
         jPanel46.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel46.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 3", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        jPanel46.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 3", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
         jPanel46.setAutoscrolls(true);
         jPanel46.setLayout(new java.awt.GridLayout(0, 6));
 
@@ -592,7 +595,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jScrollPane9.setViewportView(jPanel46);
 
         jPanel22.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 2", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 2", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
         jPanel22.setAutoscrolls(true);
         jPanel22.setLayout(new java.awt.GridLayout(0, 6));
 
@@ -694,7 +697,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jScrollPane10.setViewportView(jPanel22);
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
         jPanel15.setLayout(new java.awt.GridLayout(0, 6));
 
         jPanel27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -752,11 +755,11 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
+            .addGap(0, 197, Short.MAX_VALUE)
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+            .addGap(0, 136, Short.MAX_VALUE)
         );
 
         jPanel15.add(jPanel24);
@@ -768,11 +771,11 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
+            .addGap(0, 197, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+            .addGap(0, 136, Short.MAX_VALUE)
         );
 
         jPanel15.add(jPanel16);
@@ -800,10 +803,10 @@ public class ViewTrangChu extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1246, Short.MAX_VALUE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1218, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9))
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -820,6 +823,13 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel9Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane10, jScrollPane8, jScrollPane9});
 
         jScrollPane3.setViewportView(jPanel9);
+
+        btnDx.setText("Đăng xuất");
+        btnDx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -860,7 +870,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDx)
+                .addGap(15, 15, 15))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1276, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -869,9 +881,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
-                        .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                        .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel12)
@@ -883,16 +895,17 @@ public class ViewTrangChu extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel7))
-                            .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel4)
-                                .addComponent(jLabel6))))
+                                .addComponent(jLabel6)
+                                .addComponent(btnDx))))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel31)
                         .addComponent(jLabel32)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel11, jLabel12, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jPanel33, jPanel34, jPanel35, jPanel36, jPanel37});
@@ -1252,7 +1265,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHuyPhong)
                     .addComponent(btnDoiPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel11Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDoiPhong, btnHuyPhong});
@@ -1279,17 +1292,17 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(0, 0, 0))
         );
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                    .addComponent(pnInforKh, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnInforKh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jScrollPane7.setViewportView(jPanel40);
@@ -1302,7 +1315,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
         );
 
         jTabbedPane9.addTab("Thuê phòng", jPanel2);
@@ -1315,7 +1328,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         jTabbedPane9.addTab("Trả phòng", jPanel3);
@@ -1522,7 +1535,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
         );
 
         jTabbedPane9.addTab("Dịch vụ", jPanel4);
@@ -1587,7 +1600,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         jTabbedPane9.addTab("Nhân viên", jPanel5);
@@ -1600,7 +1613,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         jTabbedPane9.addTab("Hóa đơn", jPanel6);
@@ -1613,7 +1626,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
         jTabbedPane9.addTab("Thiết bị", jPanel7);
@@ -1621,15 +1634,10 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel38.setBackground(new java.awt.Color(255, 204, 204));
         jPanel38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        txtTenKS.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTenKS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTenKS.setText("Phần mềm quản lý khách sạn Tây Côn Lĩnh");
-        txtTenKS.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTenKSMouseClicked(evt);
-            }
-        });
 
-        lbThoiGian.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbThoiGian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbThoiGian.setText("Thời gian");
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
@@ -1650,23 +1658,20 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTenKS)
                     .addComponent(lbThoiGian))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane9)
-                    .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+            .addComponent(jTabbedPane9)
+            .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -1690,7 +1695,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 client.setAddress(txtDiaChi.getText().trim());
                 client.setCustomPhone(txtSDT.getText().trim());
                 client.setDateOfBirth(String.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(csNgaySinh.getDate())));
-
+                
                 if (rdNu.isSelected()) {
                     client.setSex("Nữ");
                 } else {
@@ -1710,7 +1715,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 return;
             }
             String idClient = listKh.get(0).getId();
-
+            
             long noDay = between2Dates.daysBetween2Dates(new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()), new SimpleDateFormat("yyyy-MM-dd").format(csTraPhong.getDate()));
             if (noDay == 0) {
                 JOptionPane.showMessageDialog(this, "Chọn ngày trả phòng");
@@ -1723,10 +1728,10 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 }
                 bill.setIdClient(idClient);
                 bill.setIdStaff(auth.id);
-
+                
                 String maHd = rand.createCode("hd", "maHd.txt");
                 System.out.println(maHd);
-
+                
                 bill.setCode(maHd);
                 bill.setPrice(String.valueOf(noDay * (Float.parseFloat(txtGiaPhong.getText().trim()) - Float.parseFloat(txtGiaGiam.getText().trim()))));
                 bill.setStatus("0");// 0 chua thanh toan
@@ -1736,13 +1741,13 @@ public class ViewTrangChu extends javax.swing.JFrame {
             }
             // thêm phòng vào hóa đơn chi tiết
             BillRoom roomBill = new BillRoom();
-
+            
             roomBill.setBillId(billService.searchHd(idClient).get(0).getId());// id hoa don
             roomBill.setRoomId(roomService.getRoomByNumber(txtSoPhong.getText().trim()).get(0).getId());
             roomBill.setPriceRoom(txtGiaPhong.getText());
             roomBill.setPromotionRoom(txtGiaGiam.getText());
             roomBill.setDateCheckIn(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
-
+            
             roomBill.setDateCheckout(new SimpleDateFormat("yyyy-MM-dd 12:00:00").format(csTraPhong.getDate()));
             roomBillService.insert(roomBill);
             JOptionPane.showMessageDialog(this, "Thành Công!!");
@@ -1847,22 +1852,16 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private void btnHuyPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyPhongActionPerformed
         Room room = new Room();
         fillRoom(room);
+        txtGiaGiam.setText("");
+        csTraPhong.setDate(new java.util.Date());
+        if (txtSoPhong.isEnabled()) {
+            txtSoPhong.setEnabled(false);
+        }
     }//GEN-LAST:event_btnHuyPhongActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 //        JOptionPane.showMessageDialog(this, );
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void txtTenKSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenKSMouseClicked
-        popupThoat.show(txtTenKS, evt.getX(), evt.getY());
-    }//GEN-LAST:event_txtTenKSMouseClicked
-
-    private void menuThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuThoatActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Muốn thoát chương trình", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
-        {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_menuThoatActionPerformed
 
     private void cbDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbDichVuMouseClicked
         DefaultComboBoxModel defaultComboBoxModel = (DefaultComboBoxModel) cbDichVu.getModel();
@@ -1870,6 +1869,12 @@ public class ViewTrangChu extends javax.swing.JFrame {
             defaultComboBoxModel.addElement(service.getName());
         }
     }//GEN-LAST:event_cbDichVuMouseClicked
+
+    private void btnDxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDxActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Muốn thoát chương trình", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnDxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1885,21 +1890,21 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -1912,15 +1917,16 @@ public class ViewTrangChu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
+                
                 new ViewTrangChu().setVisible(true);
-
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoiPhong;
+    private javax.swing.JButton btnDx;
     private javax.swing.JButton btnHuyDv;
     private javax.swing.JButton btnHuyPhong;
     private javax.swing.JButton btnQuetMa;
@@ -2034,11 +2040,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel lbThoiGian;
     private javax.swing.JMenuItem menuDichVu;
     private javax.swing.JMenuItem menuThemPhong;
-    private javax.swing.JMenuItem menuThoat;
     private javax.swing.JPanel pnInforKh;
     private javax.swing.JPopupMenu popupPhong;
     private javax.swing.JPopupMenu popupTang;
-    private javax.swing.JPopupMenu popupThoat;
     private javax.swing.JRadioButton rdNam;
     private javax.swing.JRadioButton rdNu;
     private javax.swing.JTable tbTTDichVu;

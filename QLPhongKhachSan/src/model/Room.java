@@ -46,16 +46,16 @@ public class Room {
         return status;
     }
 
-    public void setStatus(String Status) {
-        this.status = Status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getKindOfRoom() {
         return kindOfRoom;
     }
 
-    public void setKindOfRoom(String KindOfRoom) {
-        this.kindOfRoom = KindOfRoom;
+    public void setKindOfRoom(String kindOfRoom) {
+        this.kindOfRoom = kindOfRoom;
     }
 
     public String getCode() {

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Bill;
 import model.Room;
 import utilities.JdbcUntil;
@@ -18,6 +20,7 @@ public class RoomRepo {
         String sql = "select * from Room where roomNUmber = ?";
         List<Room> list = new ArrayList<>();
         try {
+
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, number);
             ps.execute();
@@ -25,8 +28,8 @@ public class RoomRepo {
             while (rs.next()) {
                 Room room = new Room();
                 room.setId(rs.getString("id"));
-                room.setStatus(rs.getString("Status"));
-                room.setKindOfRoom(rs.getString("KindOfRoom"));
+                room.setStatus(String.valueOf(rs.getInt("Status")));
+                room.setKindOfRoom(String.valueOf(rs.getString("KindOfRoom")));
                 room.setIdPromotion(rs.getString("idpromotion"));
                 room.setCode(rs.getString("Code"));
                 room.setArea(rs.getString("area"));
@@ -35,7 +38,9 @@ public class RoomRepo {
                 room.setPrice(rs.getString("Price"));
                 list.add(room);
             }
+
         } catch (SQLException ex) {
+            Logger.getLogger(RoomRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
