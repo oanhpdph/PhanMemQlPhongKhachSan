@@ -49,12 +49,13 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
     private int temp = 0, tempDv = 0;
     public int tempCheck = 0;
+    private String tenPhong = "";
     public ButtonGroup gr = new ButtonGroup();
     private RandomCode rand = new RandomCode();
     private ReadWriteData readWriteData = new ReadWriteData();
     private DaysBetween2Dates between2Dates = new DaysBetween2Dates();
     private Auth auth;
-    private String tenPhong = "";
+
     private ClientService clienService;
     private BillService billService;
     private RoomService roomService;
