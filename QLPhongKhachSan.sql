@@ -95,7 +95,7 @@ idpromotion uniqueidentifier  null,
 code varchar(20) unique  not null,
 [name] nvarchar(50)  not null,
 price decimal(20,0) default 0,
-[notes] nvarchar(50)  not null,
+[notes] nvarchar(50) ,
 constraint fk_idpromotionS foreign key (idpromotion) references promotionS(id)
 )
 
