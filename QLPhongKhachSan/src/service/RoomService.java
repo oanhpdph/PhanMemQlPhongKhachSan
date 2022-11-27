@@ -4,7 +4,7 @@ import java.util.List;
 import model.Room;
 import respository.RoomRepo;
 
-public class RoomService implements IService<Room, String>{
+public class RoomService implements IService<Room, String> {
 
     private RoomRepo repo;
 
@@ -36,7 +36,7 @@ public class RoomService implements IService<Room, String>{
 
     @Override
     public List<Room> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return repo.getAll();
     }
 
 }
