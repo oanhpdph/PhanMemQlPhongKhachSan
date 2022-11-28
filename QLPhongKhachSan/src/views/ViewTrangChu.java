@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -50,7 +51,7 @@ import viewModel.ViewItem;
 import static views.QrCode.client;
 
 public class ViewTrangChu extends javax.swing.JFrame {
-
+    
     private int temp = 0, tempDv = 0;
     public int tempCheck = 0;
     private String tenPhong = "";
@@ -59,7 +60,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private ReadWriteData readWriteData = new ReadWriteData();
     private DaysBetween2Dates between2Dates = new DaysBetween2Dates();
     private Auth auth;
-
+    
     private JPanel jpanelTemp;
     private ClientService clienService;
     private BillService billService;
@@ -69,12 +70,12 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private ServiceService serviceService;
     private RoomBillServiceService roomBillServiceService;
     Calendar calendar = Calendar.getInstance();
-
+    
     public ViewTrangChu() {
         initComponents();
-
+        
         this.setSize(GetMaxWidth(), GetMaxHeight());
-
+        
         clienService = new ClientService();
         billService = new BillService();
         roomService = new RoomService();
@@ -83,7 +84,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         serviceService = new ServiceService();
         roomBillServiceService = new RoomBillServiceService();
         auth = new Auth();
-
+        
         gr.add(rdNu);
         gr.add(rdNam);
 
@@ -109,18 +110,21 @@ public class ViewTrangChu extends javax.swing.JFrame {
             }
         }.start();
         loadCbDv();
-        loadPanel();
+        loadPanel("Tầng 1");
+        loadPanel("Tầng 2");
+        loadPanel("Tầng 3");
+
         // het init
     }
-
+    
     public int GetMaxWidth() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
     }
-
+    
     public int GetMaxHeight() {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
     }
-
+    
     public void loadCbDv() {
         DefaultComboBoxModel defaultComboBoxModel = (DefaultComboBoxModel) cbDichVu.getModel();
         List<String> list = new ArrayList<>();
@@ -139,9 +143,20 @@ public class ViewTrangChu extends javax.swing.JFrame {
             defaultComboBoxModel.addElement(service.getName());
         }
     }
-
-    public void loadPanel() {
+    
+    public void loadPanel(String floor) {
+        List<Room> list = new ArrayList<>();
         for (Room room : roomService.getAll()) {
+            if (room.getLocation().equals(floor)) {
+                list.add(room);
+            }
+            if (floor.equals("all")) {
+                list.add(room);
+            }
+        }
+        Collections.reverse(list);
+        for (Room room : list) {
+            
             JPanel jPanel = new JPanel();
             JLabel jLabel = new JLabel();
             JLabel jLabel1 = new JLabel();
@@ -151,7 +166,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
             JLabel jLabel5 = new JLabel();
             JLabel jLabel6 = new JLabel();
             jPanel.setName(room.getRoomNumber());
-
+            
             if (room.getStatus().equals("1")) {
                 jPanel.setBackground(new java.awt.Color(204, 204, 255));
             }
@@ -171,22 +186,22 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
             jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel1.setText("Loại:");
-
+            
             jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel2.setText("Diện tích:");
-
+            
             jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel3.setText("Giá:");
-
+            
             jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel4.setText(Integer.parseInt(room.getKindOfRoom()) == 1 ? "Phong don" : Integer.parseInt(room.getKindOfRoom()) == 2 ? "phong doi" : "phong vip");
-
+            
             jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel5.setText(room.getArea() + " " + "m2");
-
+            
             jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel6.setText(room.getPrice() + " " + "VNĐ");
-
+            
             javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel);
             jPanel.setLayout(jPanel10Layout);
             jPanel10Layout.setHorizontalGroup(
@@ -221,32 +236,39 @@ public class ViewTrangChu extends javax.swing.JFrame {
                                             .addComponent(jLabel6))
                                     .addContainerGap())
             );
-
+            
             jPanel.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     popupPhong.show(jPanel, evt.getX(), evt.getY());
                 }
-
+                
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
                     tenPhong = jPanel.getName();
                     jpanelTemp = jPanel;
                 }
             });
+            
+            if (room.getLocation().equals("Tầng 2")) {
+                jPanelTang2.add(jPanel);
+                jPanelTang2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 2" + " " + "(" + list.size() + ")", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
 
-            if (room.getLocation().equals("tang 2")) {
-                jPanel22.add(jPanel);
             }
-            if (room.getLocation().equals("tang 1")) {
-                jPanel15.add(jPanel);
+            if (room.getLocation().equals("Tầng 1")) {
+                jPanelTang1.add(jPanel);
+                jPanelTang1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 1" + " " + "(" + list.size() + ")", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
+
             }
-            if (room.getLocation().equals("tang 3")) {
-                jPanel46.add(jPanel);
+            if (room.getLocation().equals("Tầng 3")) {
+                jPanelTang3.add(jPanel);
+                jPanelTang3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 3" + " " + "(" + list.size() + ")", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
+
             }
         }
+        
     }
-
+    
     void maxNs() {
-
+        
         int year = calendar.get(Calendar.YEAR) - 14;
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DATE);
@@ -258,7 +280,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
             Logger.getLogger(ViewTrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     void reset(Client client) {
         txtCCCD.setText(client.getIdPersonCard());
         txtMaKH.setText(client.getCode());
@@ -269,7 +291,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         maxNs();
         tempCheck = 0;
     }
-
+    
     public void fillRoom(Room room) {
         txtMaPhong.setText(room.getCode());
         txtSoPhong.setText(room.getRoomNumber());
@@ -282,7 +304,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         txtLocationRoom.setText(room.getLocation());
         txtGiaPhong.setText(room.getPrice());
     }
-
+    
     void fillClient(Client client) {
         txtTenKhachHang.setText(client.getName());
         try {
@@ -294,7 +316,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(ViewTrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         if (client.getSex().equals("Nam")) {
             rdNam.setSelected(true);
         } else {
@@ -305,7 +327,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         txtSDT.setText(client.getCustomPhone());
         txtMaKH.setText(client.getCode());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -344,14 +366,12 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jPanel46 = new javax.swing.JPanel();
+        jPanelTang3 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jPanel22 = new javax.swing.JPanel();
+        jPanelTang2 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jPanel15 = new javax.swing.JPanel();
+        jPanelTang1 = new javax.swing.JPanel();
         btnDx = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jPanel40 = new javax.swing.JPanel();
@@ -642,26 +662,26 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
         jScrollPane9.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPanel46.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel46.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 3", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
-        jPanel46.setAutoscrolls(true);
-        jPanel46.setLayout(new java.awt.GridLayout(0, 5));
-        jScrollPane9.setViewportView(jPanel46);
+        jPanelTang3.setBackground(new java.awt.Color(255, 255, 204));
+        jPanelTang3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 3", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
+        jPanelTang3.setAutoscrolls(true);
+        jPanelTang3.setLayout(new java.awt.GridLayout(0, 5));
+        jScrollPane9.setViewportView(jPanelTang3);
 
         jScrollPane10.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPanel22.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 2", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
-        jPanel22.setAutoscrolls(true);
-        jPanel22.setLayout(new java.awt.GridLayout(0, 5));
-        jScrollPane10.setViewportView(jPanel22);
+        jPanelTang2.setBackground(new java.awt.Color(255, 255, 204));
+        jPanelTang2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 2", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
+        jPanelTang2.setAutoscrolls(true);
+        jPanelTang2.setLayout(new java.awt.GridLayout(0, 5));
+        jScrollPane10.setViewportView(jPanelTang2);
 
         jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
-        jPanel15.setLayout(new java.awt.GridLayout(0, 5));
-        jScrollPane8.setViewportView(jPanel15);
+        jPanelTang1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanelTang1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tầng 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 0, 20))); // NOI18N
+        jPanelTang1.setLayout(new java.awt.GridLayout(0, 5));
+        jScrollPane8.setViewportView(jPanelTang1);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -693,20 +713,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
         btnDx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDxActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -749,11 +755,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
                 .addComponent(btnDx)
                 .addGap(67, 67, 67))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -773,10 +775,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel8))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnDx)
-                                    .addComponent(jButton1)
-                                    .addComponent(jButton2))
+                                .addComponent(btnDx)
                                 .addComponent(jPanel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jPanel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1639,7 +1638,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTab, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -1653,7 +1652,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnThuePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuePhongActionPerformed
-
+        
         if (!txtMaPhong.getText().equals("")) {
             // them khach hang
             if (tempCheck == 0) {
@@ -1668,13 +1667,13 @@ public class ViewTrangChu extends javax.swing.JFrame {
                         btnThuePhongActionPerformed(evt);
                     }
                 }
-
+                
                 Client client = new Client();
                 client.setName(txtTenKhachHang.getText().trim());
                 client.setAddress(txtDiaChi.getText().trim());
                 client.setCustomPhone(txtSDT.getText().trim());
                 client.setDateOfBirth(String.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(csNgaySinh.getDate())));
-
+                
                 if (rdNu.isSelected()) {
                     client.setSex("Nữ");
                 } else {
@@ -1694,7 +1693,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 return;
             }
             String idClient = listKh.get(0).getId();
-
+            
             long noDay = between2Dates.daysBetween2Dates(new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()), new SimpleDateFormat("yyyy-MM-dd").format(csTraPhong.getDate()));
             if (noDay == 0) {
                 JOptionPane.showMessageDialog(this, "Chọn ngày trả phòng");
@@ -1707,10 +1706,10 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 }
                 bill.setIdClient(idClient);
                 bill.setIdStaff(auth.id);
-
+                
                 String maHd = rand.createCode("hd", "maHd.txt");
                 System.out.println(maHd);
-
+                
                 bill.setCode(maHd);
                 bill.setPrice(String.valueOf(noDay * (Float.parseFloat(txtGiaPhong.getText().trim()) - Float.parseFloat(txtGiaGiam.getText().trim()))));
                 bill.setStatus("0");// 0 chua thanh toan
@@ -1719,21 +1718,30 @@ public class ViewTrangChu extends javax.swing.JFrame {
             }
             // thêm phòng vào hóa đơn chi tiết
             BillRoom roomBill = new BillRoom();
-
+            Room room = roomService.getRoomByNumber(txtSoPhong.getText().trim()).get(0);
             roomBill.setBillId(billService.searchHd(idClient).get(0).getId());// id hoa don
-            roomBill.setRoomId(roomService.getRoomByNumber(txtSoPhong.getText().trim()).get(0).getId());
+            roomBill.setRoomId(room.getId());
             roomBill.setPriceRoom(txtGiaPhong.getText());
             roomBill.setPromotionRoom(txtGiaGiam.getText());
             roomBill.setDateCheckIn(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()));
-
+            
             roomBill.setDateCheckout(new SimpleDateFormat("yyyy-MM-dd 12:00:00").format(csTraPhong.getDate()));
             roomBillService.insert(roomBill);
             JOptionPane.showMessageDialog(this, "Thành Công!!");
-            
-            jPanel15.removeAll();
-            jPanel22.removeAll();
-            jPanel46.removeAll();
-            loadPanel();
+            room.setStatus("2");
+            roomService.update(room, room.getRoomNumber());
+            if (room.getLocation().equals("Tầng 1")) {
+                jPanelTang1.removeAll();
+            }
+            if (room.getLocation().equals("Tầng 2")) {
+                jPanelTang2.removeAll();
+            }
+            if (room.getLocation().equals("Tầng 3")) {
+                jPanelTang3.removeAll();
+            }
+            loadPanel(room.getLocation());
+            btnResetActionPerformed(evt);
+            btnHuyPhongActionPerformed(evt);
         } else {
             JOptionPane.showMessageDialog(this, "Chưa chọn phòng");
             return;
@@ -1753,7 +1761,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 return;
             }
             PromotionRService promotionRService = new PromotionRService();
-
+            
             Room room = roomService.getRoomByNumber(txtSoPhong.getText().trim()).get(0);
             String ngay = String.valueOf(calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DATE));
             PromotionR pr = promotionRService.searchPromotionR(room.getIdPromotion(), ngay);
@@ -1763,7 +1771,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
             if (room.getStatus().equals("1")) {
                 fillRoom(room);
             }
-
+            
             if (viewItemService.getAll(room.getId()) != null) {
                 DefaultTableModel defaultTableModel = (DefaultTableModel) tbNoiThat.getModel();
                 defaultTableModel.setRowCount(0);
@@ -1850,6 +1858,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         if (txtSoPhong.isEnabled() == true) {
             txtSoPhong.setEnabled(false);
         }
+        txtGiaGiam.setText("0");
     }//GEN-LAST:event_btnHuyPhongActionPerformed
 
     private void jMenuThuePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuThuePhongActionPerformed
@@ -1882,23 +1891,42 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
     private void jMenuSanSangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSanSangActionPerformed
         jpanelTemp.setBackground(new java.awt.Color(204, 204, 255));
-
+        Room room = new Room();
+        room.setStatus("1");
+        room.setRoomNumber(tenPhong);
+        roomService.update(room, room.getRoomNumber());
     }//GEN-LAST:event_jMenuSanSangActionPerformed
 
     private void jMenuDangDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDangDonActionPerformed
         jpanelTemp.setBackground(new java.awt.Color(221, 216, 216));
+        Room room = new Room();
+        room.setStatus("4");
+        room.setRoomNumber(tenPhong);
+        roomService.update(room, room.getRoomNumber());
     }//GEN-LAST:event_jMenuDangDonActionPerformed
 
     private void jMenuSuaChuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSuaChuaActionPerformed
         jpanelTemp.setBackground(new java.awt.Color(255, 153, 0));
+        Room room = new Room();
+        room.setStatus("5");
+        room.setRoomNumber(tenPhong);
+        roomService.update(room, room.getRoomNumber());
     }//GEN-LAST:event_jMenuSuaChuaActionPerformed
 
     private void jMenuCoKhachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCoKhachActionPerformed
         jpanelTemp.setBackground(new java.awt.Color(204, 255, 255));
+        Room room = new Room();
+        room.setStatus("2");
+        room.setRoomNumber(tenPhong);
+        roomService.update(room, room.getRoomNumber());
     }//GEN-LAST:event_jMenuCoKhachActionPerformed
 
     private void jMenuChuaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuChuaDonActionPerformed
         jpanelTemp.setBackground(new java.awt.Color(204, 255, 204));
+        Room room = new Room();
+        room.setStatus("3");
+        room.setRoomNumber(tenPhong);
+        roomService.update(room, room.getRoomNumber());
     }//GEN-LAST:event_jMenuChuaDonActionPerformed
 
     private void menuDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDichVuActionPerformed
@@ -1911,15 +1939,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_menuDichVuActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1940,15 +1959,15 @@ public class ViewTrangChu extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewTrangChu.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -1961,9 +1980,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
+                
                 new ViewTrangChu().setVisible(true);
-
+                
             }
         });
     }
@@ -1981,8 +2000,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser csNgaySd;
     private com.toedter.calendar.JDateChooser csNgaySinh;
     private com.toedter.calendar.JDateChooser csTraPhong;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2034,9 +2051,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
@@ -2047,12 +2062,14 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
-    private javax.swing.JPanel jPanel46;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelTang1;
+    private javax.swing.JPanel jPanelTang2;
+    private javax.swing.JPanel jPanelTang3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;

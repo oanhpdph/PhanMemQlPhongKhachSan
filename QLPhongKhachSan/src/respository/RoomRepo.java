@@ -72,10 +72,11 @@ public class RoomRepo {
     }
 
     public void update(String status, String numberRoom) {
-        String sql = "update room set [status]=? where numberRoom =? ";
+        String sql = "update room set [status]=? where roomNumber =? ";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, Integer.parseInt(status));
+            ps.setString(2, numberRoom);
             ps.execute();
             ResultSet rs = ps.getResultSet();
         } catch (SQLException ex) {

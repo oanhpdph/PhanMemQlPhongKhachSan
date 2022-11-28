@@ -25,8 +25,8 @@ public class RoomService implements IService<Room, String> {
     }
 
     @Override
-    public void update(Room entity, String id) {
-        repo.update(entity.getStatus(),entity.getCode());
+    public void update(Room entity, String roomNumber) {
+        repo.update(entity.getStatus(), roomNumber);
     }
 
     @Override
