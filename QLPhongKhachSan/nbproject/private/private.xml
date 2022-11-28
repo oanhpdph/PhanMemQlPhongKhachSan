@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/views/QrCode.java</file>
-            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/application/Application.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/viewModel/ViewItem.java</file>
             <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/service/ServiceService.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/respository/ViewItemRepo.java</file>
+            <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/service/ViewItemService.java</file>
             <file>file:/C:/Users/FPTSHOP/OneDrive/Desktop/Documents/PhanMemQlPhongKhachSan/QLPhongKhachSan/src/views/ViewTrangChu.java</file>
         </group>
     </open-files>

@@ -26,7 +26,7 @@ public class RoomService implements IService<Room, String> {
 
     @Override
     public void update(Room entity, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        repo.update(entity.getStatus(),entity.getCode());
     }
 
     @Override

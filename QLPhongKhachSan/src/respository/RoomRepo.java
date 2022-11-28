@@ -68,7 +68,19 @@ public class RoomRepo {
         } catch (SQLException ex) {
             Logger.getLogger(RoomRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return list;
     }
+
+    public void update(String status, String numberRoom) {
+        String sql = "update room set [status]=? where numberRoom =? ";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(status));
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+        } catch (SQLException ex) {
+            Logger.getLogger(RoomRepo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
