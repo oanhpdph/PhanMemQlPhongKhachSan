@@ -11,8 +11,9 @@ public class PromotionR {
     public PromotionR() {
     }
 
-    public PromotionR(String id, String value, String dateStart, String dateEnd) {
+    public PromotionR(String id,String code,String value, String dateStart, String dateEnd) {
         this.id = id;
+        this.code=code;
         this.value = value;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
