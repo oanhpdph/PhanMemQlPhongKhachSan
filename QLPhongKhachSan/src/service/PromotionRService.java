@@ -1,18 +1,23 @@
 package service;
 
+import java.util.ArrayList;
 import model.PromotionR;
-import respository.PromotionRRepo;
+import respository.PromotionRrepo;
 
-public class PromotionRService {
+public class PromotionRService implements IPromotionR{
 
-    private PromotionRRepo repo;
+    private PromotionRrepo repo;
 
     public PromotionRService() {
-        repo = new PromotionRRepo();
+        repo = new PromotionRrepo();
     }
 
+    @Override
     public PromotionR searchPromotionR(String id, String dateEnd) {
-        return repo.searchPromotionR(id,dateEnd);
+        return this.repo.searchPromotionR(id,dateEnd);
     }
-
+    @Override
+   public ArrayList<PromotionR> getAll(){
+       return this.repo.getAll();
+   }
 }
