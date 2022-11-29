@@ -2,14 +2,14 @@ package service;
 
 import java.util.ArrayList;
 import model.PromotionR;
-import respository.PromotionRrepo;
+import respository.PromotionRRepo;
 
 public class PromotionRService implements IPromotionR{
 
-    private PromotionRrepo repo;
+    private PromotionRRepo repo;
 
     public PromotionRService() {
-        repo = new PromotionRrepo();
+        repo = new PromotionRRepo();
     }
 
     @Override

@@ -206,9 +206,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_them">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Image/Add.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Th&#xea;m ph&#xf2;ng"/>
       </Properties>
       <Events>
@@ -217,9 +214,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_sua">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Image/Edit.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="S&#x1eed;a ph&#xf2;ng"/>
       </Properties>
       <Events>
@@ -228,9 +222,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_xoa">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Image/Delete.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="X&#xf3;a ph&#xf2;ng"/>
       </Properties>
       <Events>
@@ -320,9 +311,6 @@
     </Container>
     <Component class="javax.swing.JButton" name="btn_ht">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Image/Refresh.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Reset"/>
       </Properties>
       <Events>

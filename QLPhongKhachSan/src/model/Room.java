@@ -15,16 +15,19 @@ public class Room {
     public Room() {
     }
 
-    public Room(String id, String idStatus, String idKindOfRoom, String code, String roomNumber, String area, String location, String price) {
+    public Room(String id, String status, String kindOfRoom, String idPromotion, String code, String roomNumber, String area, String location, String price) {
         this.id = id;
-        this.status = idStatus;
-        this.kindOfRoom = idKindOfRoom;
+        this.status = status;
+        this.kindOfRoom = kindOfRoom;
+        this.idPromotion = idPromotion;
         this.code = code;
         this.roomNumber = roomNumber;
         this.area = area;
         this.location = location;
         this.price = price;
     }
+
+  
 
     public String getIdPromotion() {
         return idPromotion;

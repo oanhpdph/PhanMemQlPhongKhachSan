@@ -14,29 +14,33 @@ import service.IPromotionR;
 import service.PromotionRService;
 import service.IRoom;
 import service.RoomService;
-
+import service.roomServiceManh;
 
 /**
  *
  * @author TGDD
  */
 public class ViewRoom extends javax.swing.JFrame {
-    IRoom rsv;
-    IPromotionR prl;
+
+    roomServiceManh rsv;
+    PromotionRService prl;
+
     /**
      * Creates new form viewPhong
      */
     public ViewRoom() {
         initComponents();
-        this.rsv = new RoomService();
+        this.rsv = new roomServiceManh();
         this.prl = new PromotionRService();
         loadData();
         setLocation();
-        loadDataPro();
+//        loadDataPro();
     }
-   public void setLocation(){
-       this.setLocationRelativeTo(null);
-   }
+
+    public void setLocation() {
+        this.setLocationRelativeTo(null);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,7 +102,6 @@ public class ViewRoom extends javax.swing.JFrame {
 
         jLabel12.setText("Price");
 
-        btn_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Add.png"))); // NOI18N
         btn_them.setText("Thêm phòng");
         btn_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +109,6 @@ public class ViewRoom extends javax.swing.JFrame {
             }
         });
 
-        btn_sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Edit.png"))); // NOI18N
         btn_sua.setText("Sửa phòng");
         btn_sua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +116,6 @@ public class ViewRoom extends javax.swing.JFrame {
             }
         });
 
-        btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Delete.png"))); // NOI18N
         btn_xoa.setText("Xóa phòng");
         btn_xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +141,6 @@ public class ViewRoom extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb_qlp);
 
-        btn_ht.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Refresh.png"))); // NOI18N
         btn_ht.setText("Reset");
         btn_ht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,115 +260,118 @@ public class ViewRoom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void loadData(){
-        DefaultTableModel dlm =(DefaultTableModel) tb_qlp.getModel();
+    public void loadData() {
+        DefaultTableModel dlm = (DefaultTableModel) tb_qlp.getModel();
         dlm.setRowCount(0);
-        int stt=1;
-        for(Room r : this.rsv.getAll()){
-            Object[] rowData={
-               stt,getStatus(r.getStatus()),getKindOfRoom(r.getKindOfRoom()),getNamePro(r.getIdPromotion()),r.getCode(),r.getRoomNumber(),r.getArea(),r.getLocation(),r.getPrice()
+        int stt = 1;
+        for (Room r : this.rsv.getAll()) {
+            Object[] rowData = {
+                stt, getStatus(r.getStatus()), getKindOfRoom(r.getKindOfRoom()), getNamePro(r.getIdPromotion()), r.getCode(), r.getRoomNumber(), r.getArea(), r.getLocation(), r.getPrice()
             };
-             dlm.addRow(rowData);
-             stt++;
+            dlm.addRow(rowData);
+            stt++;
         }
-    }   
-    public String getNamePro(String id){
-        String code="";
-        for(PromotionR pr: this.prl.getAll()){
-            if(id.equals(pr.getId())){
-                code=pr.getCode();
+    }
+
+    public String getNamePro(String id) {
+        String code = "";
+        for (PromotionR pr : this.prl.getAll()) {
+            if (id.equals(pr.getId())) {
+                code = pr.getCode();
                 break;
             }
         }
         return code;
     }
 
-    public String getStatus(int stt){
-        String name="";
-        if(stt==0){
-            name="Sẵn Sàng";
-        }else if(stt==1){
-            name="Có Khách";
-        }else if(stt==2){
-            name="Chưa dọn";
-        }else if(stt==3){
-            name="Đang dọn";
-        }else if(stt==4){
-            name="Đang sửa";
+    public String getStatus(String stt) {
+        String name = "";
+        if (stt.equals("1")) {
+            name = "Sẵn Sàng";
+        } else if (stt.equals("2")) {
+            name = "Có Khách";
+        } else if (stt.equals("3")) {
+            name = "Chưa dọn";
+        } else if (stt.equals("4")) {
+            name = "Đang dọn";
+        } else if (stt.equals("5")) {
+            name = "Đang sửa";
         }
         return name;
     }
-      public String getKindOfRoom(int kor){
-        String name="";
-        if(kor==0){
-            name="Phòng Đơn";
-        }else if(kor==1){
-            name="Phòng Đôi";
-        }else if(kor==2){
-            name="Phòng Vip";
+
+    public String getKindOfRoom(String kor) {
+        String name = "";
+        if (kor.equals("1")) {
+            name = "Phòng Đơn";
+        } else if (kor.equals("2")) {
+            name = "Phòng Đôi";
+        } else if (kor.equals("3")) {
+            name = "Phòng Vip";
         }
         return name;
     }
-      public ArrayList<String> getcodePro(){
-        ArrayList<String> listName= new ArrayList<>();
-        String code="";
-         for(PromotionR stt : this.prl.getAll()){
-           code=stt.getCode();
-           listName.add(code);
-        }
-         return listName;
-    }
-     public void loadDataPro(){
-         DefaultComboBoxModel cbm =(DefaultComboBoxModel) cb_pro.getModel();
-        for(String stt : this.getcodePro()){
-           cbm.addElement(stt);
-        }
-    } 
-      
-     
-    public Room getFromData(){
-        int status=cb_stt.getSelectedIndex();
-        int kor=cb_kor.getSelectedIndex();
-        String code=txt_code.getText();
-        String rmb=txt_rn.getText();
-        String area=txt_area.getText();
-        String lct=txt_loc.getText();
-        String pri=txt_pri.getText();
-        String codepro=cb_pro.getSelectedItem().toString();
-        String idPro="";
-        for(PromotionR pr: this.prl.getAll()){
-            if(codepro.equals(pr.getCode())){
-                idPro=pr.getId();
+
+//    public ArrayList<String> getcodePro() {
+//        ArrayList<String> listName = new ArrayList<>();
+//        String code = "";
+//        for (PromotionR stt : this.prl.getAll()) {
+//            code = stt.getCode();
+//            listName.add(code);
+//        }
+//        return listName;
+//    }
+
+//    public void loadDataPro() {
+//        DefaultComboBoxModel cbm = (DefaultComboBoxModel) cb_pro.getModel();
+//        for (String stt : this.getcodePro()) {
+//            cbm.addElement(stt);
+//        }
+//    }
+
+    public Room getFromData() {
+        String status = String.valueOf(cb_stt.getSelectedIndex());
+        String kor = String.valueOf(cb_kor.getSelectedIndex());
+        String code = txt_code.getText();
+        String rmb = txt_rn.getText();
+        String area = txt_area.getText();
+        String lct = txt_loc.getText();
+        String pri = txt_pri.getText();
+        String codepro = cb_pro.getSelectedItem().toString();
+        String idPro = "";
+        for (PromotionR pr : this.prl.getAll()) {
+            if (codepro.equals(pr.getCode())) {
+                idPro = pr.getId();
                 break;
             }
         }
-        
-        Room r = new Room(status, kor,idPro, code, rmb, area, lct, pri);
+
+        Room r = new Room("", status, kor, idPro, code, rmb, area, lct, pri);
         return r;
     }
-    public String getIdFromData(){
-          Room r1 =this.getFromData();
-        String id="";
-        for(Room r : this.rsv.getAll()){        
-            if( r1.getCode().equals(r.getCode())
-                       ){
-                 id=r.getId();
-                 break;
-            }       
+
+    public String getIdFromData() {
+        Room r1 = this.getFromData();
+        String id = "";
+        for (Room r : this.rsv.getAll()) {
+            if (r1.getCode().equals(r.getCode())) {
+                id = r.getId();
+                break;
+            }
         }
         return id;
     }
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
         // TODO add your handling code here:
-        Room r=this.getFromData();
+        Room r = this.getFromData();
         this.rsv.insert(r);
-        JOptionPane.showMessageDialog(this,"Thêm thành công!");
+        JOptionPane.showMessageDialog(this, "Thêm thành công!");
         loadData();
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void tb_qlpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_qlpMouseClicked
         // TODO add your handling code here:
-        int row= tb_qlp.getSelectedRow();
+        int row = tb_qlp.getSelectedRow();
         cb_stt.setSelectedItem(this.tb_qlp.getValueAt(row, 1).toString());
         cb_kor.setSelectedItem(tb_qlp.getValueAt(row, 2).toString());
         txt_code.setText(this.tb_qlp.getValueAt(row, 4).toString());
@@ -381,33 +384,33 @@ public class ViewRoom extends javax.swing.JFrame {
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
         // TODO add your handling code here:
-         int row=tb_qlp.getSelectedRow();
-        if(row==-1){
+        int row = tb_qlp.getSelectedRow();
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn đối tượng cần sửa!");
-        }else{
-        int choice= JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?","message", JOptionPane.YES_NO_OPTION);
-        if(choice==JOptionPane.YES_OPTION){
-        Room r=this.getFromData();
-        this.rsv.update(getIdFromData(), r);
-        JOptionPane.showMessageDialog(this, "Sửa thành công!");
-        loadData();
-        }
+        } else {
+            int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "message", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                Room r = this.getFromData();
+                this.rsv.update(getIdFromData(), r);
+                JOptionPane.showMessageDialog(this, "Sửa thành công!");
+                loadData();
+            }
         }
     }//GEN-LAST:event_btn_suaActionPerformed
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
         // TODO add your handling code here:
-        int row=tb_qlp.getSelectedRow();
-        if(row==-1){
+        int row = tb_qlp.getSelectedRow();
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn đối tượng cần xóa!");
-        }else{
-         int choice= JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?","message", JOptionPane.YES_NO_OPTION);
-         if(choice==JOptionPane.YES_OPTION){
-        Room r=this.getFromData();
-        this.rsv.delete(getIdFromData());
-        JOptionPane.showMessageDialog(this, "Xóa thành công!");
-        loadData();
-           }
+        } else {
+            int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không?", "message", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                Room r = this.getFromData();
+                this.rsv.delete(getIdFromData());
+                JOptionPane.showMessageDialog(this, "Xóa thành công!");
+                loadData();
+            }
         }
     }//GEN-LAST:event_btn_xoaActionPerformed
 

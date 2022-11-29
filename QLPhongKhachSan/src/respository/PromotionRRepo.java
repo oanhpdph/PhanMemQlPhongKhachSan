@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import model.PromotionR;
 import utilities.JdbcUntil;
 
-public class PromotionRrepo {
+public class PromotionRRepo {
 
     Connection conn = JdbcUntil.getConnection();
 
@@ -32,32 +32,33 @@ public class PromotionRrepo {
                 return pr;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PromotionRrepo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PromotionRRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-    public  ArrayList<PromotionR> getAll(){
-         ArrayList<PromotionR> listSTT= new ArrayList<>();
-          try {
+
+    public ArrayList<PromotionR> getAll() {
+        ArrayList<PromotionR> listSTT = new ArrayList<>();
+        try {
             Connection conn = JdbcUntil.getConnection();
             String sql = "Select * from promotionR ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.execute();
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {
-                String id=rs.getString("Id");
-                String code=rs.getString("code");
+                String id = rs.getString("Id");
+                String code = rs.getString("code");
                 String vl = rs.getString("value");
                 String ds = rs.getString("dateStart");
-                String de=rs.getString("dateEnd");
-               
-               PromotionR pro= new PromotionR(id,code,vl, ds, de);
+                String de = rs.getString("dateEnd");
+
+                PromotionR pro = new PromotionR(id, code, vl, ds, de);
                 listSTT.add(pro);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-         
-         return listSTT;
-}
+
+        return listSTT;
+    }
 }

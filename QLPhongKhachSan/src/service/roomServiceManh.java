@@ -12,35 +12,32 @@ import respository.RoomViewrepo;
  *
  * @author FPTSHOP
  */
-public class roomServiceManh {
+public class roomServiceManh implements IRoom {
 
-    public class RoomService implements IRoom {
+    RoomViewrepo rvr;
 
-        RoomViewrepo rvr;
-
-        public RoomService() {
-            this.rvr = new RoomViewrepo();
-        }
-
-        @Override
-        public void insert(Room room) {
-            this.rvr.insert(room);
-        }
-
-        @Override
-        public void update(String id, Room room) {
-            this.rvr.update(id, room);
-        }
-
-        @Override
-        public void delete(String id) {
-            this.rvr.delete(id);
-        }
-
-        @Override
-        public ArrayList<Room> getAll() {
-            return this.rvr.getAll();
-        }
-
+    public roomServiceManh() {
+        this.rvr = new RoomViewrepo();
     }
+
+    @Override
+    public void insert(Room room) {
+        this.rvr.insert(room);
+    }
+
+    @Override
+    public void update(String id, Room room) {
+        this.rvr.update(id, room);
+    }
+
+    @Override
+    public void delete(String id) {
+        this.rvr.delete(id);
+    }
+
+    @Override
+    public ArrayList<Room> getAll() {
+        return this.rvr.getAll();
+    }
+
 }
