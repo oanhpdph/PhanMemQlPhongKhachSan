@@ -28,4 +28,8 @@ public class RoomService implements IRoom{
     public ArrayList<Room> getAll(){
        return this.rvr.getAll();
     }
+   @Override
+    public Room getSearchRoom(String ma){
+        return this.rvr.getSearchRoom(ma);
+    }
 }

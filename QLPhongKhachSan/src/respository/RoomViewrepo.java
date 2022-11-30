@@ -89,4 +89,31 @@ public class RoomViewrepo {
          
          return listRoom;
 }
+     public Room getSearchRoom(String code){
+          try {
+            Connection conn = JdbcUntil.getConnection();
+            String sql = "Select room.id,room.status,room.kindOfRoom,room.code,room.roomNumber,room.area,room.location,room.price,promotionR.Id as 'idPro' from room inner join promotionR on room.idPromotion=promotionR.Id where room.code=? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,code);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            while (rs.next()) {
+                String id=rs.getString("Id");
+                int Status = rs.getInt("Status");
+                int kor = rs.getInt("KindOfRoom");
+                String ma =rs.getString("code");
+                String rNb=rs.getString("roomNumber");
+                String area=rs.getString("area");
+                String location=rs.getString("location");
+                String price=rs.getString("price");
+                String idpro=rs.getString("idPro");
+                Room r= new Room(id, Status, kor,idpro, ma, rNb, area, location, price);
+                return r;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+         
+         return null;
+     }
 }

@@ -16,5 +16,7 @@ public interface IRoom {
     public void update(String id, Room room);
 
     public ArrayList<Room> getAll();
-    
+
+    public Room getSearchRoom(String ma);
+
 }
