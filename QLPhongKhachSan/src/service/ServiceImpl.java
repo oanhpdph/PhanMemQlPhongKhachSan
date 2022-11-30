@@ -51,5 +51,12 @@ public class ServiceImpl implements ServiceService {
     public ArrayList<PromotionSVM> getListPS() {
         return svr.getAllPS();
     }
+    
+    
+    
+    
+    
+    
+    
 
 }
