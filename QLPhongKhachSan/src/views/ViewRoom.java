@@ -101,7 +101,6 @@ public class ViewRoom extends javax.swing.JFrame {
 
         jLabel12.setText("Price");
 
-        btn_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Add.png"))); // NOI18N
         btn_them.setText("Thêm phòng");
         btn_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +108,6 @@ public class ViewRoom extends javax.swing.JFrame {
             }
         });
 
-        btn_sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Edit.png"))); // NOI18N
         btn_sua.setText("Sửa phòng");
         btn_sua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +115,6 @@ public class ViewRoom extends javax.swing.JFrame {
             }
         });
 
-        btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Delete.png"))); // NOI18N
         btn_xoa.setText("Xóa phòng");
         btn_xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +140,6 @@ public class ViewRoom extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb_qlp);
 
-        btn_ht.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Refresh.png"))); // NOI18N
         btn_ht.setText("Reset");
         btn_ht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +159,6 @@ public class ViewRoom extends javax.swing.JFrame {
             }
         });
 
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.jpg"))); // NOI18N
         btn_search.setText("Search");
         btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +271,7 @@ public class ViewRoom extends javax.swing.JFrame {
                     .addComponent(btn_search))
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
