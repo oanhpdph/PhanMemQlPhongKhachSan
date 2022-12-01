@@ -644,9 +644,8 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-<<<<<<< HEAD
-=======
+      
+
         jLabel45 = new javax.swing.JLabel();
         txt_rn = new javax.swing.JTextField();
         txt_pri = new javax.swing.JTextField();
@@ -673,7 +672,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
->>>>>>> origin/main
 
         popupPhong.setBorderPainted(false);
         popupPhong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -2286,7 +2284,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
         jTab.addTab("Thiết bị", jPanel7);
 
-        jTab.addTab("Phòng", jPanel15);
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
