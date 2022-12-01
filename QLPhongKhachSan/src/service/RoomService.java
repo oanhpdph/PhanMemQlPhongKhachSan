@@ -38,12 +38,5 @@ public class RoomService implements IService<Room, String> {
     public List<Room> getAll() {
         return repo.getAll();
     }
-<<<<<<< HEAD
-   @Override
-    public Room getSearchRoom(String ma){
-        return this.rvr.getSearchRoom(ma);
-    }
-=======
 
->>>>>>> origin/main
 }

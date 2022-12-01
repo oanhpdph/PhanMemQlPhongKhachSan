@@ -9,14 +9,14 @@ import model.Room;
  */
 public interface IRoom {
 
-    public void insert(Room room);
+    public String insert(Room room);
 
-    public void delete(String id);
+    public String  delete(String id);
 
-    public void update(String id, Room room);
+    public String update(String id, Room room);
 
     public ArrayList<Room> getAll();
 
-    public Room getSearchRoom(String ma);
+    public Room getSearchRoom(String code);
 
 }
