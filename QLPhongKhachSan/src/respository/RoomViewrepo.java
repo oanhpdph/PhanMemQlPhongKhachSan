@@ -14,7 +14,8 @@ import java.sql.ResultSet;
 
 public class RoomViewrepo {
 
-    public void insert(Room room) {
+    public boolean insert(Room room) {
+        int check=0;
         try {
             Connection conn = JdbcUntil.getConnection();
             String sql = "Insert into Room (Status,KindOfRoom,idPromotion,code,roomNumber,area,location,price) values(?,?,?,?,?,?,?,?)";
@@ -32,9 +33,11 @@ public class RoomViewrepo {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return check>0;
     }
 
-    public void update(String id, Room room) {
+    public boolean update(String id, Room room) {
+        int check=0;
         try {
             Connection conn = JdbcUntil.getConnection();
             String sql = "Update Room set Status=?,KindOfRoom=?,idPromotion=?,code=?,roomNumber=?,area=?,location=?,price=? where id=?";
@@ -51,10 +54,13 @@ public class RoomViewrepo {
             ps.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
+        
         }
+        return check>0;
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
+        int check=0;
         try {
             Connection conn = JdbcUntil.getConnection();
             String sql = "Delete from Room where id=?";
@@ -64,6 +70,7 @@ public class RoomViewrepo {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return check>0;
     }
 
     public ArrayList<Room> getAll() {
@@ -90,7 +97,6 @@ public class RoomViewrepo {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-<<<<<<< HEAD
          
          return listRoom;
 }
@@ -104,8 +110,8 @@ public class RoomViewrepo {
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {
                 String id=rs.getString("Id");
-                int Status = rs.getInt("Status");
-                int kor = rs.getInt("KindOfRoom");
+                String Status = rs.getString("Status");
+                String kor = rs.getString("KindOfRoom");
                 String ma =rs.getString("code");
                 String rNb=rs.getString("roomNumber");
                 String area=rs.getString("area");
@@ -121,9 +127,6 @@ public class RoomViewrepo {
          
          return null;
      }
-=======
 
-        return listRoom;
-    }
->>>>>>> origin/main
+    
 }

@@ -21,23 +21,43 @@ public class roomServiceManh implements IRoom {
     }
 
     @Override
-    public void insert(Room room) {
-        this.rvr.insert(room);
+    public String insert(Room room) {
+        boolean insertRoom=rvr.insert(room);
+        if(insertRoom){
+            return "Thêm thành công";
+        }else{
+            return "Thêm thất bại!";
+        }
     }
 
     @Override
-    public void update(String id, Room room) {
-        this.rvr.update(id, room);
+    public String update(String id, Room room) {
+        boolean updateRoom=rvr.update(id,room);
+        if(updateRoom){
+            return "Update thành công";
+        }else{
+            return "Update thất bại!";
+        }
     }
 
     @Override
-    public void delete(String id) {
-        this.rvr.delete(id);
+    public String delete(String id) {
+        boolean deleteRoom=rvr.delete(id);
+        if(deleteRoom){
+            return "Xóa thành công";
+        }else{
+            return "Xóa thất bại!";
+        }
     }
 
     @Override
     public ArrayList<Room> getAll() {
         return this.rvr.getAll();
+    }
+    
+    @Override
+    public Room getSearchRoom(String code){
+        return this.rvr.getSearchRoom(code);
     }
 
 }

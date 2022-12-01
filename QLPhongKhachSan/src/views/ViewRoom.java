@@ -13,7 +13,6 @@ import model.Room;
 import service.IPromotionR;
 import service.PromotionRService;
 import service.IRoom;
-import service.RoomService;
 import service.roomServiceManh;
 
 /**
@@ -286,7 +285,7 @@ public class ViewRoom extends javax.swing.JFrame {
         int stt = 1;
         for (Room r : this.rsv.getAll()) {
             Object[] rowData = {
-                stt, getStatus(r.getStatus()), getKindOfRoom(r.getKindOfRoom()), getNamePro(r.getIdPromotion()), r.getCode(), r.getRoomNumber(), r.getArea(), r.getLocation(), r.getPrice()
+                stt, r.getStatus(), r.getKindOfRoom(), getNamePro(r.getIdPromotion()), r.getCode(), r.getRoomNumber(), r.getArea(), r.getLocation(), r.getPrice()
             };
             dlm.addRow(rowData);
             stt++;
@@ -304,33 +303,8 @@ public class ViewRoom extends javax.swing.JFrame {
         return code;
     }
 
-    public String getStatus(String stt) {
-        String name = "";
-        if (stt.equals("1")) {
-            name = "Sẵn Sàng";
-        } else if (stt.equals("2")) {
-            name = "Có Khách";
-        } else if (stt.equals("3")) {
-            name = "Chưa dọn";
-        } else if (stt.equals("4")) {
-            name = "Đang dọn";
-        } else if (stt.equals("5")) {
-            name = "Đang sửa";
-        }
-        return name;
-    }
+   
 
-    public String getKindOfRoom(String kor) {
-        String name = "";
-        if (kor.equals("1")) {
-            name = "Phòng Đơn";
-        } else if (kor.equals("2")) {
-            name = "Phòng Đôi";
-        } else if (kor.equals("3")) {
-            name = "Phòng Vip";
-        }
-        return name;
-    }
 
 //    public ArrayList<String> getcodePro() {
 //        ArrayList<String> listName = new ArrayList<>();
@@ -385,7 +359,6 @@ public class ViewRoom extends javax.swing.JFrame {
         // TODO add your handling code here:
         Room r = this.getFromData();
         this.rsv.insert(r);
-        JOptionPane.showMessageDialog(this, "Thêm thành công!");
         loadData();
     }//GEN-LAST:event_btn_themActionPerformed
 
@@ -412,7 +385,6 @@ public class ViewRoom extends javax.swing.JFrame {
             if (choice == JOptionPane.YES_OPTION) {
                 Room r = this.getFromData();
                 this.rsv.update(getIdFromData(), r);
-                JOptionPane.showMessageDialog(this, "Sửa thành công!");
                 loadData();
             }
         }
@@ -428,7 +400,6 @@ public class ViewRoom extends javax.swing.JFrame {
             if (choice == JOptionPane.YES_OPTION) {
                 Room r = this.getFromData();
                 this.rsv.delete(getIdFromData());
-                JOptionPane.showMessageDialog(this, "Xóa thành công!");
                 loadData();
             }
         }
@@ -460,7 +431,7 @@ public class ViewRoom extends javax.swing.JFrame {
        int stt=1;
       Room r=this.rsv.getSearchRoom(txt_sear.getText().toString());
        Object[] rowData={
-               stt,getStatus(r.getStatus()),getKindOfRoom(r.getKindOfRoom()),getNamePro(r.getIdPromotion()),r.getCode(),r.getRoomNumber(),r.getArea(),r.getLocation(),r.getPrice()
+               stt,r.getStatus(),r.getKindOfRoom(),getNamePro(r.getIdPromotion()),r.getCode(),r.getRoomNumber(),r.getArea(),r.getLocation(),r.getPrice()
             };
              dlm.addRow(rowData);            
    }
