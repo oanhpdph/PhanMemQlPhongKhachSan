@@ -3,8 +3,8 @@ package model;
 public class Room {
 
     private String id;
-    private int status;
-    private int kindOfRoom;
+    private String status;
+    private String kindOfRoom;
     private String idPromotion;
     private String code;
     private String roomNumber;
@@ -15,7 +15,8 @@ public class Room {
     public Room() {
     }
 
-    public Room(int status, int kindOfRoom, String idPromotion, String code, String roomNumber, String area, String location, String price) {
+    public Room(String id, String status, String kindOfRoom, String idPromotion, String code, String roomNumber, String area, String location, String price) {
+        this.id = id;
         this.status = status;
         this.kindOfRoom = kindOfRoom;
         this.idPromotion = idPromotion;
@@ -26,17 +27,7 @@ public class Room {
         this.price = price;
     }
 
-    public Room(String id, int idStatus, int KindOfRoom,String idPromotion, String code, String roomNumber, String area, String location, String price) {
-        this.id = id;
-        this.status = idStatus;
-        this.kindOfRoom = KindOfRoom;
-        this.code = code;
-        this.roomNumber = roomNumber;
-        this.area = area;
-        this.location = location;
-        this.price = price;
-        this.idPromotion=idPromotion;
-    }
+  
 
     public String getIdPromotion() {
         return idPromotion;
@@ -54,23 +45,21 @@ public class Room {
         this.id = id;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatus(String Status) {
+        this.status = Status;
     }
 
-    public int getKindOfRoom() {
+    public String getKindOfRoom() {
         return kindOfRoom;
     }
 
-    public void setKindOfRoom(int kindOfRoom) {
-        this.kindOfRoom = kindOfRoom;
+    public void setKindOfRoom(String KindOfRoom) {
+        this.kindOfRoom = KindOfRoom;
     }
-
-   
 
     public String getCode() {
         return code;

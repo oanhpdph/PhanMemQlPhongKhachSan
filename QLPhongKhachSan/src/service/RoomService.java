@@ -1,35 +1,49 @@
 package service;
 
-import java.util.ArrayList;
+import java.util.List;
 import model.Room;
-import respository.RoomViewrepo;
+import respository.RoomRepo;
 
-public class RoomService implements IRoom{
+public class RoomService implements IService<Room, String> {
 
-   RoomViewrepo rvr;
-    
-    public RoomService(){
-        this.rvr = new RoomViewrepo();
+    private RoomRepo repo;
+
+    public RoomService() {
+        repo = new RoomRepo();
     }
+
+    public List<Room> getRoomByNumber(String number) {
+        if (number.equals("") || number == null || repo.getRoomByNumber(number).isEmpty()) {
+            return null;
+        }
+        return repo.getRoomByNumber(number);
+    }
+
     @Override
-    public void insert(Room room){
-        this.rvr.insert(room);
+    public String insert(Room entity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     @Override
-    public void update(String id,Room room){
-        this.rvr.update(id, room);
+    public void update(Room entity, String roomNumber) {
+        repo.update(entity.getStatus(), roomNumber);
     }
+
     @Override
-    public void delete(String id){
-        this.rvr.delete(id);
+    public void delete(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     @Override
-    public ArrayList<Room> getAll(){
-       return this.rvr.getAll();
+    public List<Room> getAll() {
+        return repo.getAll();
     }
+<<<<<<< HEAD
    @Override
     public Room getSearchRoom(String ma){
         return this.rvr.getSearchRoom(ma);
     }
+=======
+
+>>>>>>> origin/main
 }
