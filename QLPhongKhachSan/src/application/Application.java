@@ -10,9 +10,6 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-
-//            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-         
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             new ViewTrangChu().setVisible(true);
         } catch (Exception ex) {
