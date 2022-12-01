@@ -474,7 +474,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         popupPhong = new javax.swing.JPopupMenu();
@@ -644,9 +644,8 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-<<<<<<< HEAD
-=======
+      
+
         jLabel45 = new javax.swing.JLabel();
         txt_rn = new javax.swing.JTextField();
         txt_pri = new javax.swing.JTextField();
@@ -673,7 +672,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
->>>>>>> origin/main
 
         popupPhong.setBorderPainted(false);
         popupPhong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -2286,215 +2284,6 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
         jTab.addTab("Thiết bị", jPanel7);
 
-<<<<<<< HEAD
-=======
-        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel45.setText("QUẢN LÝ PHÒNG");
-
-        btn_them.setText("Thêm phòng");
-        btn_them.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_themActionPerformed(evt);
-            }
-        });
-
-        btn_sua.setText("Sửa phòng");
-        btn_sua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_suaActionPerformed(evt);
-            }
-        });
-
-        btn_xoa.setText("Xóa phòng");
-        btn_xoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_xoaActionPerformed(evt);
-            }
-        });
-
-        tb_qlp.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "STT", "Status", "KindofRoom", "Promotion", "Code", "roomNumber", "Area", "Location", "Price"
-            }
-        ));
-        tb_qlp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_qlpMouseClicked(evt);
-            }
-        });
-        jScrollPane13.setViewportView(tb_qlp);
-
-        btn_ht.setText("Reset");
-        btn_ht.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_htActionPerformed(evt);
-            }
-        });
-
-        cb_stt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sẵn Sàng", "Có Khách", "Chưa Dọn", "Đang Dọn", "Đang Sửa" }));
-
-        cb_kor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng Đơn", "Phòng Đôi", "Phòng Vip" }));
-
-        jLabel57.setText("Code_Promotion");
-
-        cb_pro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_proActionPerformed(evt);
-            }
-        });
-
-        btn_search.setText("Search");
-        btn_search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_searchActionPerformed(evt);
-            }
-        });
-
-        jLabel58.setText("Status");
-
-        jLabel59.setText("Search");
-
-        jLabel60.setText("KindofRoom");
-
-        txt_loc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_locActionPerformed(evt);
-            }
-        });
-
-        jLabel61.setText("Code");
-
-        jLabel62.setText("RoomNumber");
-
-        jLabel63.setText("Area");
-
-        jLabel64.setText("Location");
-
-        jLabel65.setText("Price");
-
->>>>>>> origin/main
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGap(0, 1291, Short.MAX_VALUE)
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
-=======
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(btn_them)
-                .addGap(80, 80, 80)
-                .addComponent(btn_sua)
-                .addGap(78, 78, 78)
-                .addComponent(btn_xoa)
-                .addGap(97, 97, 97)
-                .addComponent(btn_ht)
-                .addGap(81, 81, 81)
-                .addComponent(btn_search)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane13)
-                .addContainerGap())
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(433, 433, 433)
-                        .addComponent(jLabel45)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                                .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cb_stt, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_code, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_kor, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                                .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_rn, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                    .addComponent(cb_pro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(86, 86, 86)))
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel59, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel65, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel64, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_loc, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addComponent(txt_pri, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                    .addComponent(txt_sear))
-                .addGap(152, 152, 152))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel45)
-                .addGap(54, 54, 54)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_code, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel64)
-                    .addComponent(txt_loc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel61)
-                    .addComponent(jLabel57)
-                    .addComponent(cb_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel58)
-                    .addComponent(cb_stt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel62)
-                    .addComponent(txt_rn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel65)
-                    .addComponent(txt_pri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel60)
-                    .addComponent(cb_kor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel63)
-                    .addComponent(txt_area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel59)
-                    .addComponent(txt_sear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_ht)
-                    .addComponent(btn_xoa)
-                    .addComponent(btn_sua)
-                    .addComponent(btn_them)
-                    .addComponent(btn_search))
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
->>>>>>> origin/main
-        );
-
-        jTab.addTab("Phòng", jPanel15);
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
@@ -2533,13 +2322,13 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {                                         
         reset(new Client());
-    }//GEN-LAST:event_btnResetActionPerformed
+    }                                        
 
-    private void btnThuePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuePhongActionPerformed
+    private void btnThuePhongActionPerformed(java.awt.event.ActionEvent evt) {                                             
         if (JOptionPane.showConfirmDialog(this, "Xác nhận cho thuê phòng.", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             if (!txtMaPhong.getText().equals("")) {
                 // them khach hang
@@ -2635,9 +2424,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 return;
             }
         }
-    }//GEN-LAST:event_btnThuePhongActionPerformed
+    }                                            
 
-    private void btnDoiPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiPhongActionPerformed
+    private void btnDoiPhongActionPerformed(java.awt.event.ActionEvent evt) {                                            
         DefaultTableModel defaultTableModelds = (DefaultTableModel) tbDsPhong.getModel();
         defaultTableModelds.setRowCount(0);
         for (Room room : roomService.getAll()) {
@@ -2678,9 +2467,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
             temp = 0;
 
         }
-    }//GEN-LAST:event_btnDoiPhongActionPerformed
+    }                                           
 
-    private void btnQuetMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuetMaActionPerformed
+    private void btnQuetMaActionPerformed(java.awt.event.ActionEvent evt) {                                          
         QrCode qrCode = new QrCode();
         if (qrCode.isVisible() == true) {
             qrCode.show();
@@ -2703,14 +2492,14 @@ public class ViewTrangChu extends javax.swing.JFrame {
             }
         }.start();
         qrCode.temp = 0;
-    }//GEN-LAST:event_btnQuetMaActionPerformed
+    }                                         
 
-    private void pnInforKhMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnInforKhMouseEntered
+    private void pnInforKhMouseEntered(java.awt.event.MouseEvent evt) {                                       
         threadChuY t1 = new threadChuY();
         t1.start();
-    }//GEN-LAST:event_pnInforKhMouseEntered
+    }                                      
 
-    private void btnThemDvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDvActionPerformed
+    private void btnThemDvActionPerformed(java.awt.event.ActionEvent evt) {                                          
         if (roomService.getRoomByNumber(txtSoPhongDV.getText().trim()) == null) {
             JOptionPane.showMessageDialog(this, "Xem lại số phòng");
             return;
@@ -2727,9 +2516,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
         roomBillService.setDateofHire(new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()));
         JOptionPane.showMessageDialog(this, roomBillServiceService.insert(roomBillService));
 
-    }//GEN-LAST:event_btnThemDvActionPerformed
+    }                                         
 
-    private void cbDichVuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbDichVuItemStateChanged
+    private void cbDichVuItemStateChanged(java.awt.event.ItemEvent evt) {                                          
         for (Service service : serviceService.getAll()) {
             if (cbDichVu.getSelectedItem().equals(service.getName())) {
                 csNgaySd.setDate(new java.util.Date());
@@ -2737,9 +2526,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 txtGiaDv.setText(service.getPrice());
             }
         }
-    }//GEN-LAST:event_cbDichVuItemStateChanged
+    }                                         
 
-    private void btnHuyPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyPhongActionPerformed
+    private void btnHuyPhongActionPerformed(java.awt.event.ActionEvent evt) {                                            
         Room room = new Room();
         fillRoom(room);
         if (txtSoPhong.isEnabled() == true) {
@@ -2748,9 +2537,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
 
         }
         txtGiaGiam.setText("0");
-    }//GEN-LAST:event_btnHuyPhongActionPerformed
+    }                                           
 
-    private void jMenuThuePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuThuePhongActionPerformed
+    private void jMenuThuePhongActionPerformed(java.awt.event.ActionEvent evt) {                                               
         PromotionRService promotionRService = new PromotionRService();
         Room room = roomService.getRoomByNumber(tenPhong).get(0);
         if (room.getStatus().equals("1")) {
@@ -2765,29 +2554,29 @@ public class ViewTrangChu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Phòng chưa sẵn sàng cho thuê");
             txtSoPhong.setText("");
         }
-    }//GEN-LAST:event_jMenuThuePhongActionPerformed
+    }                                              
 
-    private void cbDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbDichVuMouseClicked
+    private void cbDichVuMouseClicked(java.awt.event.MouseEvent evt) {                                      
         loadCbDv();
-    }//GEN-LAST:event_cbDichVuMouseClicked
+    }                                     
 
-    private void btnDxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDxActionPerformed
+    private void btnDxActionPerformed(java.awt.event.ActionEvent evt) {                                      
         if (JOptionPane.showConfirmDialog(this, "Muốn đăng xuất khỏi chương trình?", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             QrCode.client = null;
             System.exit(0);
         }
-    }//GEN-LAST:event_btnDxActionPerformed
+    }                                     
 
-    private void jMenuSanSangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSanSangActionPerformed
+    private void jMenuSanSangActionPerformed(java.awt.event.ActionEvent evt) {                                             
         jpanelTemp.setBackground(new java.awt.Color(204, 204, 255));
         Room room = new Room();
         room.setStatus("1");
         room.setRoomNumber(tenPhong);
         roomService.update(room, room.getRoomNumber());
         loadSl();
-    }//GEN-LAST:event_jMenuSanSangActionPerformed
+    }                                            
 
-    private void jMenuDangDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDangDonActionPerformed
+    private void jMenuDangDonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         jpanelTemp.setBackground(new java.awt.Color(221, 216, 216));
         Room room = new Room();
         room.setStatus("4");
@@ -2795,9 +2584,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
         roomService.update(room, room.getRoomNumber());
         loadSl();
 
-    }//GEN-LAST:event_jMenuDangDonActionPerformed
+    }                                            
 
-    private void jMenuSuaChuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSuaChuaActionPerformed
+    private void jMenuSuaChuaActionPerformed(java.awt.event.ActionEvent evt) {                                             
         jpanelTemp.setBackground(new java.awt.Color(255, 153, 0));
         Room room = new Room();
         room.setStatus("5");
@@ -2805,9 +2594,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
         roomService.update(room, room.getRoomNumber());
         loadSl();
 
-    }//GEN-LAST:event_jMenuSuaChuaActionPerformed
+    }                                            
 
-    private void jMenuCoKhachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCoKhachActionPerformed
+    private void jMenuCoKhachActionPerformed(java.awt.event.ActionEvent evt) {                                             
         jpanelTemp.setBackground(new java.awt.Color(204, 255, 255));
         Room room = new Room();
         room.setStatus("2");
@@ -2815,9 +2604,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
         roomService.update(room, room.getRoomNumber());
         loadSl();
 
-    }//GEN-LAST:event_jMenuCoKhachActionPerformed
+    }                                            
 
-    private void jMenuChuaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuChuaDonActionPerformed
+    private void jMenuChuaDonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         jpanelTemp.setBackground(new java.awt.Color(204, 255, 204));
         Room room = new Room();
         room.setStatus("3");
@@ -2825,9 +2614,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
         roomService.update(room, room.getRoomNumber());
         loadSl();
 
-    }//GEN-LAST:event_jMenuChuaDonActionPerformed
+    }                                            
 
-    private void menuDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDichVuActionPerformed
+    private void menuDichVuActionPerformed(java.awt.event.ActionEvent evt) {                                           
         Room room = roomService.getRoomByNumber(tenPhong).get(0);
         if (room.getStatus().equals("2")) {
             jTab.setSelectedIndex(3);
@@ -2836,17 +2625,17 @@ public class ViewTrangChu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Phòng chưa được thuê.");
         }
 
-    }//GEN-LAST:event_menuDichVuActionPerformed
+    }                                          
    
-    private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
+    private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         Room r = this.getFromData();
         this.roomServiceManh.insert(r);
         JOptionPane.showMessageDialog(this, "Thêm thành công!");
         loadDataRoom();
-    }//GEN-LAST:event_btn_themActionPerformed
+    }                                        
 
-    private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
+    private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         int row = tb_qlp.getSelectedRow();
         if (row == -1) {
@@ -2859,9 +2648,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 loadDataRoom();
             }
         }
-    }//GEN-LAST:event_btn_suaActionPerformed
+    }                                       
 
-    private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
+    private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         int row = tb_qlp.getSelectedRow();
         if (row == -1) {
@@ -2874,9 +2663,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 loadDataRoom();
             }
         }
-    }//GEN-LAST:event_btn_xoaActionPerformed
+    }                                       
 
-    private void tb_qlpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_qlpMouseClicked
+    private void tb_qlpMouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
         int row = tb_qlp.getSelectedRow();
         cb_stt.setSelectedItem(this.tb_qlp.getValueAt(row, 1).toString());
@@ -2887,9 +2676,9 @@ public class ViewTrangChu extends javax.swing.JFrame {
         txt_area.setText(this.tb_qlp.getValueAt(row, 7).toString());
         txt_pri.setText(this.tb_qlp.getValueAt(row, 8).toString());
         cb_pro.setSelectedItem(this.tb_qlp.getValueAt(row, 3).toString());
-    }//GEN-LAST:event_tb_qlpMouseClicked
+    }                                   
 
-    private void btn_htActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_htActionPerformed
+    private void btn_htActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         //        lbl_id.setText("");
         cb_stt.setSelectedIndex(0);
@@ -2900,11 +2689,11 @@ public class ViewTrangChu extends javax.swing.JFrame {
         txt_pri.setText("");
         txt_rn.setText("");
         cb_pro.setSelectedIndex(0);
-    }//GEN-LAST:event_btn_htActionPerformed
+    }                                      
 
-    private void cb_proActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_proActionPerformed
+    private void cb_proActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-    }//GEN-LAST:event_cb_proActionPerformed
+    }                                      
      public void loadTableSearch(){
        DefaultTableModel dlm=(DefaultTableModel) tb_qlp.getModel();
        dlm.setRowCount(0);
@@ -2915,7 +2704,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
             };
              dlm.addRow(rowData);            
    }
-    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         int check=0;
         if(txt_sear.getText().equals("")){
@@ -2933,11 +2722,11 @@ public class ViewTrangChu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Không có đối tượng cần tìm");
             }
         }
-    }//GEN-LAST:event_btn_searchActionPerformed
+    }                                          
 
-    private void txt_locActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_locActionPerformed
+    private void txt_locActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_locActionPerformed
+    }                                       
 
     /**
      * @param args the command line arguments
@@ -2986,7 +2775,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnDoiPhong;
     private javax.swing.JButton btnDx;
     private javax.swing.JButton btnHuyDv;
@@ -3180,6 +2969,7 @@ public class ViewTrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField txt_pri;
     private javax.swing.JTextField txt_rn;
     private javax.swing.JTextField txt_sear;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
 }
+
